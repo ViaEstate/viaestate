@@ -188,6 +188,74 @@ h2 {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+/* ========== MOBILANPASSNING ========== */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .logo {
+    height: 60px;
+    margin-left: 0;
+  }
+
+  .hero-content h1 {
+    font-size: 28px;
+  }
+
+  .hero-content input {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-content button {
+    width: 100%;
+  }
+
+  .property-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    flex-direction: column;
+  }
+
+  form {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tab-content {
+    padding: 20px;
+  }
+
+  .back-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .faq-answer h3 {
+    font-size: 20px;
+  }
+
+  .faq-answer p {
+    font-size: 14px;
+  }
+}
+
 
 
 
@@ -313,4 +381,71 @@ footer {
   margin-top: 30px;
   width: 120px;
   height: auto;
+}
+/* ========== MOBILANPASSNING ========== */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .logo {
+    height: 60px;
+    margin-left: 0;
+  }
+
+  .hero-content h1 {
+    font-size: 28px;
+  }
+
+  .hero-content input {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-content button {
+    width: 100%;
+  }
+
+  .property-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    flex-direction: column;
+  }
+
+  form {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tab-content {
+    padding: 20px;
+  }
+
+  .back-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .faq-answer h3 {
+    font-size: 20px;
+  }
+
+  .faq-answer p {
+    font-size: 14px;
+  }
 }
