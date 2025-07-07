@@ -449,3 +449,47 @@ footer {
     font-size: 14px;
   }
 }
+/* Hamburgarmeny – syns bara på mobil */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  z-index: 20;
+}
+
+/* Mobilmeny (dold från början) */
+.nav-links.mobile {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  background: #1f1f1f;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  padding: 10px 20px;
+  z-index: 15;
+}
+
+/* Visa meny när aktiv */
+.nav-links.mobile.active {
+  display: flex;
+}
+
+/* Visa hamburgarmeny på mobil */
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+  .nav-links {
+    display: none;
+  }
+  .nav-links.mobile {
+    display: none;
+  }
+}
