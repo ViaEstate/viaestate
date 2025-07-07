@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ViaEstate – Luxury Properties</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <img src="img/logo-viaestate.png" alt="ViaEstate Logo" class="logo" />
+      <ul class="nav-links">
+        <li><button class="nav-btn active" data-tab="home">Home</button></li>
+        <li><button class="nav-btn" data-tab="properties">Properties</button></li>
+         <li><button class="nav-btn" data-tab="vault">The Vault</button></li>
+        <li><button class="nav-btn" data-tab="about">About</button></li>
+        <li><button class="nav-btn" data-tab="contact">Contact</button></li>
+        
+      </ul>
+    </nav>
+  </header>
+
+  <div id="loading" class="loading">Loading...</div>
+
+  <section id="home" class="hero tab-content active">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Welcome to ViaEstate</h1>
+      <p>Explore the world's most exclusive homes</p>
+      <input type="text" placeholder="Search by location (e.g. France)" id="searchInput" />
+      <button id="searchButton" onclick="searchProperty()">Search</button>
+    </div>
+  </section>
+
+  <main>
+    <section id="properties" class="tab-content">
+      <h2>Featured Properties</h2>
+      <div class="property-grid">
+        <div class="property-card" data-name="france" data-tab="france-details">
+          <img src="img/france.jpg" alt="france Villa" />
+          <h3>Villa in France</h3>
+          <p>Price: $850,000</p>
+        </div>
+        <div class="property-card" data-name="new york" data-tab="ny-details">
+          <img src="img/newyork.jpg" alt="NY Loft" />
+          <h3>Modern Loft in New York</h3>
+          <p>Price: $1,200,000</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="france-details" class="tab-content">
+      <button class="back-btn" onclick="setActiveTab('properties')">
+  <svg class="back-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path d="M15 18l-6-6 6-6"/>
+  </svg>
+</button>
+
+      <h2>Villa in France</h2>
+      <div class="gallery">
+        <img src="img/france.jpg" alt="Villa" />
+        <img src="img/france2.jpg" alt="Villa Interior" />
+      </div>
+      <p><strong>Price:</strong> $850,000</p>
+      <p><strong>Location:</strong> France, Nice</p>
+      <p><strong>Description:</strong> Ocean view villa with private pool, modern design, 3 bedrooms, 2 bathrooms, 250m².</p>
+    </section>
+
+    <section id="ny-details" class="tab-content">
+       <button class="back-btn" onclick="setActiveTab('properties')">
+  <svg class="back-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path d="M15 18l-6-6 6-6"/>
+  </svg>
+</button>
+      <h2>Modern Loft in New York</h2>
+      <div class="gallery">
+        <img src="img/newyork.jpg" alt="Loft" />
+        <img src="img/newyork2.jpg" alt="Loft Interior" />
+      </div>
+      <p><strong>Price:</strong> $1,200,000</p>
+      <p><strong>Location:</strong> Manhattan, NY</p>
+      <p><strong>Description:</strong> Panoramic views, 2 bedrooms, 2 bathrooms, open floor plan, 180m².</p>
+    </section>
+
+    <section id="about" class="tab-content">
+      <h2>About Us</h2>
+      <p>ViaEstate was founded in the summer of 2025 with a bold vision – to transform how real estate is marketed and sold across Europe.</p>
+      <p>We don’t just provide a platform – we set a new standard. Real estate companies partner with ViaEstate to showcase their properties through a refined, user-focused experience. We are the go-to marketplace for residential properties in Europe, where buyers and sellers connect seamlessly and securely.</p>
+      <p>We see the gaps in the traditional real estate industry – slow processes, fragmented markets, and lack of accessibility. ViaEstate fills those gaps with innovation, clarity, and speed. We make the property journey smoother for everyone, especially for individuals who don’t know where to begin.</p>
+      <p>Our ambition drives everything we do. With a strong network across Europe and deep industry insight, we offer end-to-end guidance – from the first thought of buying a home to making it a reality. We constantly evolve, using feedback not just to improve, but to lead.</p>
+      <p>ViaEstate is not just part of the market – we redefine it. We are your trusted partner in European real estate.</p>
+    </section>
+
+    <section id="contact" class="tab-content">
+  <h2>Contact Us</h2>
+  <form id="contact-form">
+    <label>Name</label>
+    <input type="text" name="user_name" placeholder="Your name" required />
+    <label>Email</label>
+    <input type="email" name="user_email" placeholder="your@email.com" required />
+    <label>Message</label>
+    <textarea name="user_message" placeholder="Write your message..." required></textarea>
+    <button type="submit">Send</button>
+  </form>
+  <p id="form-status" style="text-align:center; margin-top:1rem;"></p>
+</section>
+
+  <section id="vault" class="tab-content">
+  <h2>The Vault – FAQ</h2>
+  <p>Explore key insights about the property buying journey across Europe – from financing to legal considerations.</p>
+
+  <div class="faq-grid">
+    <div class="faq-card" data-tab="faq-buying-process">
+      <h3>How does the buying process work?</h3>
+    </div>
+    <div class="faq-card" data-tab="faq-mortgage">
+      <h3>Where can I apply for a mortgage?</h3>
+    </div>
+    <div class="faq-card" data-tab="faq-inspection">
+      <h3>Do I need a home inspection?</h3>
+    </div>
+    <div class="faq-card" data-tab="faq-documents">
+      <h3>What documents are required?</h3>
+    </div>
+  </div>
+</section>
+
+<section id="faq-buying-process" class="tab-content">
+   <button class="back-btn" onclick="setActiveTab('vault')">
+  <svg class="back-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path d="M15 18l-6-6 6-6"/>
+  </svg>
+</button>
+  <h2>How does the buying process work?</h2>
+  <p class="faq-answer">
+    The process varies by country, but generally involves signing a preliminary contract, arranging financing, completing legal checks, and finalizing the sale with a notary. At ViaEstate, we guide you through every step to ensure clarity and security.
+  </p>
+  <div class="logo-container">
+    <img src="img/logo-viaestate.png" alt="ViaEstate Logo" />
+  </div>
+</section>
+
+<section id="faq-mortgage" class="tab-content">
+   <button class="back-btn" onclick="setActiveTab('vault')">
+  <svg class="back-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path d="M15 18l-6-6 6-6"/>
+  </svg>
+</button>
+  <h2>Where can I apply for a mortgage?</h2>
+  <p class="faq-answer">
+    We collaborate with European banks and international lenders who specialize in property financing for cross-border buyers. Whether you're local or relocating, we’ll help you get pre-approved and compare offers.
+  </p>
+  <div class="logo-container">
+    <img src="img/logo-viaestate.png" alt="ViaEstate Logo" />
+  </div>
+</section>
+
+<section id="faq-inspection" class="tab-content">
+   <button class="back-btn" onclick="setActiveTab('vault')">
+  <svg class="back-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path d="M15 18l-6-6 6-6"/>
+  </svg>
+</button>
+  <h2>Do I need a home inspection?</h2>
+  <p class="faq-answer">
+    Absolutely. A third-party inspection helps uncover hidden defects and gives you leverage in negotiations. We recommend certified, independent inspectors in every region we serve.
+  </p>
+  <div class="logo-container">
+    <img src="img/logo-viaestate.png" alt="ViaEstate Logo" />
+  </div>
+</section>
+
+<section id="faq-documents" class="tab-content">
+   <button class="back-btn" onclick="setActiveTab('vault')">
+  <svg class="back-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path d="M15 18l-6-6 6-6"/>
+  </svg>
+</button>
+  <h2>What documents are required?</h2>
+  <p class="faq-answer">
+    You'll typically need proof of identity, a purchase contract, financial statements, and in some cases, a residency certificate. We help compile and verify your documents to avoid delays.
+  </p>
+  <div class="logo-container">
+    <img src="img/logo-viaestate.png" alt="ViaEstate Logo" />
+  </div>
+</section>
+
+
+
+  </main>
+  
+
+  <footer>
+    <p>© 2025 ViaEstate. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  // Initiera EmailJS med din Public Key
+  emailjs.init("LIGhuOBvexlJzWLNw"); // 🛠 Ersätt med din riktiga Public Key
+
+  const form = document.getElementById("contact-form");
+  const status = document.getElementById("form-status");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    status.textContent = "Sending...";
+
+    emailjs.sendForm("service_rswkwdf", "template_33m4vbo", this)
+      .then(() => {
+        status.textContent = "Thank you! Your message has been sent.";
+        form.reset();
+      }, (error) => {
+        status.textContent = "Oops! Something went wrong.";
+        console.error("EmailJS Error:", error);
+      });
+  });
+</script>
+
+</body>
+</html>
