@@ -103,3 +103,10 @@ function openFaq(id) {
 function closeFaq() {
   document.getElementById("faq-answer").style.display = "none";
 }
+const hamburgerBtn = document.getElementById("hamburgerBtn");
+const navLinks = document.querySelector(".nav-links");
+
+hamburgerBtn.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+  navLinks.classList.toggle("mobile");
+});
