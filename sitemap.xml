@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Startsidan -->
+  <url>
+    <loc>https://www.viaestate.eu/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Sektion: Properties -->
+  <url>
+    <loc>https://www.viaestate.eu/properties</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Sektion: The Vault (FAQ) -->
+  <url>
+    <loc>https://www.viaestate.eu/vault</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Exempel på landssidor -->
+  <url>
+    <loc>https://www.viaestate.eu/properties/France</loc>
+    <priority>0.8</priority>
+  </url>
+
+
+  <!-- Exempel på specifik bostad -->
+  <url>
+    <loc>https://www.viaestate.eu/properties/spain/cessenon-sur-orb</loc>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>
