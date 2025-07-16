@@ -7,179 +7,302 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <img src="img/logo-viaestate.png" alt="ViaEstate Logo" class="logo" />
-      <!-- Hamburgarmenyknapp (syns bara på mobil) -->
-<button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
-  ☰
-</button>
 
-      <ul class="nav-links">
-        <li><button class="nav-btn active" data-tab="home">Home</button></li>
-        <li><button class="nav-btn" data-tab="properties">Properties</button></li>
-         <li><button class="nav-btn" data-tab="vault">The Vault</button></li>
-        <li><button class="nav-btn" data-tab="about">About</button></li>
-        <li><button class="nav-btn" data-tab="contact">Contact</button></li>
-        
-      </ul>
-    </nav>
-  </header>
+<div id="blurOverlay" class="blur-overlay hidden"></div>
 
-  <div id="loading" class="loading">Loading...</div>
+<header>
+  <nav class="navbar">
+    <img src="img/logo-viaestate.png" alt="ViaEstate Logo" class="logo" />
+    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links">
+      <li><button class="nav-btn active" data-tab="home">Home</button></li>
+      <li><button class="nav-btn" data-tab="properties">Properties</button></li>
+      <li><button class="nav-btn" data-tab="vault">The Vault</button></li>
+      <li><button class="nav-btn" data-tab="about">About</button></li>
+      <li><button class="nav-btn" data-tab="contact">Contact</button></li>
+    </ul>
+  </nav>
+</header>
+
+<div id="loading" class="loading">Loading...</div>
+
+<!-- WRAPPER START -->
+<div class="page-wrapper">
 
   <section id="home" class="hero tab-content active">
     <div class="overlay"></div>
+    <div id="homeBlurOverlay" class="blur-overlay hidden"></div>
     <div class="hero-content">
       <h1>Welcome to ViaEstate</h1>
       <p>Explore the world's most exclusive homes</p>
-      <input type="text" placeholder="Search by location (e.g. France)" id="searchInput" />
-      <button id="searchButton" onclick="searchProperty()">Search</button>
+      <button id="searchToggle" aria-label="Open search" class="search-icon-btn">
+        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
+          <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </button>
+      <div id="searchContainer" class="search-container hidden">
+        <input type="text" placeholder="Search by country, city, or name..." id="searchInput" />
+        <button id="searchButton">Search</button>
+        <p id="searchError" class="search-error hidden">We haven't found this location yet.</p>
+      </div>
     </div>
   </section>
 
-  <main>
-    <section id="properties" class="tab-content">
-      <h2>Coming soon</h2>
-   
-    </section>
+ <section id="properties" class="tab-content">
+  <h2 class="text-3xl font-semibold mb-6">Featured Properties</h2>
+  <button id="filterToggle" class="filter-toggle">Filter</button>
+  <div id="filterPopup" class="filter-popup">
+    <div class="filter-section">
+      <div class="filter-row">
+        <select id="countryFilter" class="filter-input">
+          <option value="">Select Country</option>
+          <option value="france">France</option>
+        
+        </select>
+        <input type="text" id="cityFilter" class="filter-input" placeholder="City" />
+        <input type="number" id="landSizeFilter" class="filter-input" placeholder="Land size (m²)" />
+      </div>
+      <div class="filter-row">
+        <input type="number" id="distanceToCityFilter" class="filter-input" placeholder="Max km to city" />
+        <input type="number" id="distanceToBeachFilter" class="filter-input" placeholder="Max km to beach" />
+        <input type="number" id="budgetFilter" class="filter-input" placeholder="Max budget ($)" />
+        <input type="number" id="populationFilter" class="filter-input" placeholder="Min population" />
+      </div>
+      <button id="applyFilters" class="filter-button">Apply Filters</button>
+      <button id="closeFilter" class="close-filter">Close</button>
+    </div>
+  </div>
+  <div class="property-grid" id="propertyGrid">
+    <!-- Example property cards -->
+    <div class="property-card"
+  data-name="maison-en-france"
+  data-country="France"
+  data-city="Cessenon Sur Orb"
+  data-images="https://realestateoccitanie.com/wp-content/uploads/2025/07/CES340000EA-937x623.jpg,https://realestateoccitanie.com/wp-content/uploads/2025/07/CES340000EB.jpg,https://realestateoccitanie.com/wp-content/uploads/2025/07/CES340000EC.jpg,https://realestateoccitanie.com/wp-content/uploads/2025/07/CES340000ED.jpg,https://realestateoccitanie.com/wp-content/uploads/2025/07/CES340000EE.jpg,https://realestateoccitanie.com/wp-content/uploads/2025/07/CES340000EF.jpg,https://realestateoccitanie.com/wp-content/uploads/2025/07/CES340000EG.jpg,https://realestateoccitanie.com/wp-content/uploads/2025/07/CES340000EH.jpg,https://realestateoccitanie.com/wp-content/uploads/2025/07/CES340000EK.jpg, https://realestateoccitanie.com/wp-content/uploads/2025/07/CES340000EL.jpg, https://realestateoccitanie.com/wp-content/uploads/2025/07/CES340000EM.jpg "
+  data-description="Beautiful, sought-after village in the Orb valley with its beautiful river passing by, all shops (cafes, restaurants, bakeries, butchers, supermarket, doctor, pharmacy:), situated 7 minutes from Murviel les Beziers, 25 minutes from Beziers and 35 minutes from the beaches"
+  data-city-distance="1"
+  data-beach-distance="90"
+  data-budget="313200"
+  data-population="1000">
+  <img src="https://realestateoccitanie.com/wp-content/uploads/2025/07/CES340000EA-937x623.jpg" alt="Cessenon Sur Orb Villa" />
+  <h3>Property in Cessenon Sur Orb</h3>
+  <p>Price: €313,200</p>
+</div>
 
-    <section id="about" class="tab-content">
-      <h2>About Us</h2>
-      <p>ViaEstate was founded in the summer of 2025 with a bold vision – to transform how real estate is marketed and sold across Europe.</p>
-      <p>We don’t just provide a platform – we set a new standard. Real estate companies partner with ViaEstate to showcase their properties through a refined, user-focused experience. We are the go-to marketplace for residential properties in Europe, where buyers and sellers connect seamlessly and securely.</p>
-      <p>We see the gaps in the traditional real estate industry – slow processes, fragmented markets, and lack of accessibility. ViaEstate fills those gaps with innovation, clarity, and speed. We make the property journey smoother for everyone, especially for individuals who don’t know where to begin.</p>
-      <p>Our ambition drives everything we do. With a strong network across Europe and deep industry insight, we offer end-to-end guidance – from the first thought of buying a home to making it a reality. We constantly evolve, using feedback not just to improve, but to lead.</p>
-      <p>ViaEstate is not just part of the market – we redefine it. We are your trusted partner in European real estate.</p>
-    </section>
+  <div class="property-card"
+  data-name="maison-en-france"
+  data-country="France"
+  data-city="Saint Genies De Fontedit"
+  data-images="https://realestateoccitanie.com/wp-content/uploads/2025/07/SGF102000EE-907x623.jpg, https://realestateoccitanie.com/wp-content/uploads/2025/07/SGF102000EA.jpg,https://realestateoccitanie.com/wp-content/uploads/2025/07/SGF102000EB.jpg, https://realestateoccitanie.com/wp-content/uploads/2025/07/SGF102000EC.jpg, https://realestateoccitanie.com/wp-content/uploads/2025/07/SGF102000ED.jpg, https://realestateoccitanie.com/wp-content/uploads/2025/07/SGF102000EF.jpg, https://realestateoccitanie.com/wp-content/uploads/2025/07/SGF102000EG.jpg   "
+  data-description="Village with all amenities, restaurants, grocery store, pizzeria, bakery, 20 minutes from Beziers, 25 minutes from the beaches and 10 minutes from the River Orb. Located on the second floor of an old maison de maitre, this character apartment with 48 m2 of living space, including 2 bedrooms"
+  data-city-distance="1"
+  data-beach-distance="90"
+  data-budget="92500"
+  data-population="1000">
+  <img src="https://realestateoccitanie.com/wp-content/uploads/2025/07/SGF102000EE-907x623.jpg" alt="Cessenon Sur Orb Villa" />
+  <h3>Property in Saint Genies De Fontedit</h3>
+  <p>Price: €92,500</p>
 
-    <section id="contact" class="tab-content">
-  <h2>Contact Us</h2>
-  <form id="contact-form">
-    <label>Name</label>
-    <input type="text" name="user_name" placeholder="Your name" required />
-    <label>Email</label>
-    <input type="email" name="user_email" placeholder="your@email.com" required />
-    <label>Message</label>
-    <textarea name="user_message" placeholder="Write your message..." required></textarea>
-    <button type="submit">Send</button>
-  </form>
-  <p id="form-status" style="text-align:center; margin-top:1rem;"></p>
+    <!-- Add more property cards as needed -->
+  </div>
+  <p id="noResultsMessage" class="no-results" style="display:none;">We haven't reached this location yet. Stay tuned!</p>
 </section>
+
+  <section id="about" class="tab-content">
+    <h2>About Us</h2>
+    <p>ViaEstate was founded in the summer of 2025 with a bold vision – to transform how real estate is marketed and sold across Europe.</p>
+    <p>We don’t just provide a platform – we set a new standard. Real estate companies partner with ViaEstate to showcase their properties through a refined, user-focused experience. We are the go-to marketplace for residential properties in Europe, where buyers and sellers connect seamlessly and securely.</p>
+    <p>We see the gaps in the traditional real estate industry – slow processes, fragmented markets, and lack of accessibility. ViaEstate fills those gaps with innovation, clarity, and speed. We make the property journey smoother for everyone, especially for individuals who don’t know where to begin.</p>
+    <p>Our ambition drives everything we do. With a strong network across Europe and deep industry insight, we offer end-to-end guidance – from the first thought of buying a home to making it a reality. We constantly evolve, using feedback not just to improve, but to lead.</p>
+    <p>ViaEstate is not just part of the market – we redefine it. We are your trusted partner in European real estate.</p>
+  </section>
+
+  <section id="contact" class="tab-content">
+    <h2>Contact Us</h2>
+    <form id="contact-form">
+      <label>Name</label>
+      <input type="text" name="user_name" placeholder="Your name" required />
+      <label>Email</label>
+      <input type="email" name="user_email" placeholder="your@email.com" required />
+      <label>Message</label>
+      <textarea name="user_message" placeholder="Write your message..." required></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <p id="form-status" style="text-align:center; margin-top:1rem;"></p>
+  </section>
 
   <section id="vault" class="tab-content">
-  <h2>The Vault – FAQ</h2>
-  <p>Explore key insights about the property buying journey across Europe – from financing to legal considerations.</p>
+    <h2>The Vault – FAQ</h2>
+    <p>Explore key insights about the property buying journey across Europe – from financing to legal considerations.</p>
+    <div class="faq-grid">
+      <div class="faq-card" data-tab="faq-buying-process"><h3>How does the buying process work?</h3></div>
+      <div class="faq-card" data-tab="faq-mortgage"><h3>Where can I apply for a mortgage?</h3></div>
+      <div class="faq-card" data-tab="faq-inspection"><h3>Do I need a home inspection?</h3></div>
+      <div class="faq-card" data-tab="faq-documents"><h3>What documents are required?</h3></div>
+    </div>
+  </section>
 
-  <div class="faq-grid">
-    <div class="faq-card" data-tab="faq-buying-process">
-      <h3>How does the buying process work?</h3>
-    </div>
-    <div class="faq-card" data-tab="faq-mortgage">
-      <h3>Where can I apply for a mortgage?</h3>
-    </div>
-    <div class="faq-card" data-tab="faq-inspection">
-      <h3>Do I need a home inspection?</h3>
-    </div>
-    <div class="faq-card" data-tab="faq-documents">
-      <h3>What documents are required?</h3>
-    </div>
-  </div>
-</section>
+  <section id="faq-buying-process" class="tab-content">
+    <button class="back-btn" onclick="setActiveTab('vault')">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+      Back
+    </button>
+    <h2>How does the buying process work?</h2>
+    <p>The buying process varies by country, but typically includes property selection, offer submission, legal review, signing of contracts, and final payment. We guide you at every step to ensure a secure transaction.</p>
+    <div class="logo-container"><img src="img/logo-viaestate.png" alt="ViaEstate Logo" /></div>
+  </section>
 
-<section id="faq-buying-process" class="tab-content">
-   <button class="back-btn" onclick="setActiveTab('vault')">
-  <svg class="back-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-    <path d="M15 18l-6-6 6-6"/>
-  </svg>
-</button>
+  <section id="faq-mortgage" class="tab-content">
+    <button class="back-btn" onclick="setActiveTab('vault')">
   <h2>How does the buying process work?</h2>
-  <p class="faq-answer">
-    The process varies by country, but generally involves signing a preliminary contract, arranging financing, completing legal checks, and finalizing the sale with a notary. At ViaEstate, we guide you through every step to ensure clarity and security.
-  </p>
-  <div class="logo-container">
-    <img src="img/logo-viaestate.png" alt="ViaEstate Logo" />
-  </div>
+  <p>The buying process varies by country, but typically includes property selection, offer submission, legal review, signing of contracts, and final payment. We guide you at every step to ensure a secure transaction.</p>
+  <div class="logo-container"><img src="img/logo-viaestate.png" alt="ViaEstate Logo" /></div>
 </section>
 
 <section id="faq-mortgage" class="tab-content">
-   <button class="back-btn" onclick="setActiveTab('vault')">
-  <svg class="back-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-    <path d="M15 18l-6-6 6-6"/>
+  <button class="back-btn" onclick="setActiveTab('vault')">
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <polyline points="15 18 9 12 15 6"></polyline>
   </svg>
+  Back
 </button>
   <h2>Where can I apply for a mortgage?</h2>
-  <p class="faq-answer">
-    We collaborate with European banks and international lenders who specialize in property financing for cross-border buyers. Whether you're local or relocating, we’ll help you get pre-approved and compare offers.
-  </p>
-  <div class="logo-container">
-    <img src="img/logo-viaestate.png" alt="ViaEstate Logo" />
-  </div>
+  <p>ViaEstate partners with international lenders to help you explore your mortgage options, even as a non-resident. Contact us to connect with the right institutions for your needs.</p>
+  <div class="logo-container"><img src="img/logo-viaestate.png" alt="ViaEstate Logo" /></div>
 </section>
 
 <section id="faq-inspection" class="tab-content">
-   <button class="back-btn" onclick="setActiveTab('vault')">
-  <svg class="back-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-    <path d="M15 18l-6-6 6-6"/>
+  <button class="back-btn" onclick="setActiveTab('vault')">
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <polyline points="15 18 9 12 15 6"></polyline>
   </svg>
+  Back
 </button>
+
   <h2>Do I need a home inspection?</h2>
-  <p class="faq-answer">
-    Absolutely. A third-party inspection helps uncover hidden defects and gives you leverage in negotiations. We recommend certified, independent inspectors in every region we serve.
-  </p>
-  <div class="logo-container">
-    <img src="img/logo-viaestate.png" alt="ViaEstate Logo" />
-  </div>
+  <p>An independent inspection evaluates the structure, systems, and safety of the property before purchase. This helps you understand the true condition and avoid unexpected costs.</p>
+  <div class="logo-container"><img src="img/logo-viaestate.png" alt="ViaEstate Logo" /></div>
 </section>
 
 <section id="faq-documents" class="tab-content">
-   <button class="back-btn" onclick="setActiveTab('vault')">
-  <svg class="back-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-    <path d="M15 18l-6-6 6-6"/>
+ <button class="back-btn" onclick="setActiveTab('vault')">
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <polyline points="15 18 9 12 15 6"></polyline>
   </svg>
+  Back
 </button>
+
   <h2>What documents are required?</h2>
-  <p class="faq-answer">
-    You'll typically need proof of identity, a purchase contract, financial statements, and in some cases, a residency certificate. We help compile and verify your documents to avoid delays.
-  </p>
-  <div class="logo-container">
-    <img src="img/logo-viaestate.png" alt="ViaEstate Logo" />
-  </div>
+  <p>You will typically need identification, proof of funds, and signed contracts. We provide clear checklists for every country we operate in.</p>
+  <div class="logo-container"><img src="img/logo-viaestate.png" alt="ViaEstate Logo" /></div>
 </section>
 
 
+    <section id="faq-mortgage" class="tab-content">...</section>
+    <section id="faq-inspection" class="tab-content">...</section>
+    <section id="faq-documents" class="tab-content">...</section>
 
-  </main>
-  
+  </div>
+  <!-- WRAPPER END -->
 
-  <footer>
+  <footer class="footer">
     <p>© 2025 ViaEstate. All rights reserved.</p>
   </footer>
+  <!-- Property Detail Modal -->
+<div id="propertyDetail" class="property-detail-modal hidden">
+    <button id="closePropertyDetail" class="close-detail">&times;</button>
+    <div class="modal-content">
+      <div id="statusMessage" class="status-message"></div>
 
-  <script src="script.js"></script>
+      <div class="modal-images">
+        <button class="modal-arrow left" id="prevImage">&#8592;</button>
+        <div id="modalImageWrapper">
+          <img id="modalImage" src="" alt="Property image" />
+        </div>
+        <button class="modal-arrow right" id="nextImage">&#8594;</button>
+      </div>
+      <div class="modal-description">
+        <h2 id="modalTitle"></h2>
+        <p id="modalDescription"></p>
+        <p id="modalPrice"></p>
+        <div id="modalContactSection" class="modal-contact-section">
+          <button id="openContactForm" class="contact-btn">Contact</button>
+          <form id="modalContactForm" class="modal-contact-form hidden">
+            <input type="email" name="user_email" placeholder="Your Email" required />
+            <button type="submit">Send</button>
+            <span id="modalContactStatus" class="modal-contact-status"></span>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+</div>
+
+<footer class="footer">
+  <p>© 2025 ViaEstate. All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
-  // Initiera EmailJS med din Public Key
-  emailjs.init("LIGhuOBvexlJzWLNw"); // 🛠 Ersätt med din riktiga Public Key
+  document.addEventListener("DOMContentLoaded", function () {
+    emailjs.init("LIGhuOBvexlJzWLNw"); // Replace with your real public key
 
-  const form = document.getElementById("contact-form");
-  const status = document.getElementById("form-status");
+    const contactForm = document.getElementById("contact-form");
+    const contactStatus = document.getElementById("form-status");
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    status.textContent = "Sending...";
+    if (contactForm) {
+      contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        contactStatus.textContent = "Sending...";
 
-    emailjs.sendForm("service_rswkwdf", "template_33m4vbo", this)
-      .then(() => {
-        status.textContent = "Thank you! Your message has been sent.";
-        form.reset();
-      }, (error) => {
-        status.textContent = "Oops! Something went wrong.";
-        console.error("EmailJS Error:", error);
+        emailjs.sendForm("service_rswkwdf", "template_33m4vbo", contactForm)
+          .then(() => {
+            contactStatus.textContent = "Thank you! Your message has been sent.";
+            contactForm.reset();
+          }, (error) => {
+            contactStatus.textContent = "Oops! Something went wrong.";
+            console.error("EmailJS Error:", error);
+          });
       });
+    }
+
+    const modalForm = document.getElementById("modalContactForm");
+    const modalStatus = document.getElementById("modalContactStatus");
+    const openModalBtn = document.getElementById("openContactForm");
+
+    if (openModalBtn && modalForm) {
+      openModalBtn.addEventListener("click", () => {
+        modalForm.classList.toggle("hidden");
+      });
+
+      modalForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        modalStatus.textContent = "Sending...";
+
+        emailjs.sendForm("service_rswkwdf", "template_33m4vbo", modalForm)
+          .then(() => {
+            modalStatus.textContent = "Message sent!";
+            modalForm.reset();
+          }, (error) => {
+            modalStatus.textContent = "Error sending message.";
+            console.error("EmailJS Modal Error:", error);
+          });
+      });
+    }
   });
 </script>
+<script src="script.js"></script>
+<script src="countryCityLogic.js"></script>
+<div id="statusMessage" class="status-message"></div>
+
+
+
+  </div>
+</div>
 
 </body>
 </html>
