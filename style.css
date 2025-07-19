@@ -747,115 +747,138 @@ html, body {
   transform: translateY(0);
 }
 
+/* === Din ursprungliga CSS är bevarad === */
+/* Nedan läggs till sist i din style.css för att mobilanpassa sidan */
+
 @media screen and (max-width: 768px) {
-  /* Navbar */
-  header {
+  /* BODY */
+  body {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  /* HERO SEKTION */
+  #home {
     flex-direction: column;
-    padding: 16px;
+    gap: 20px;
+    padding: 20px;
+    height: auto;
+    text-align: center;
   }
 
-  header .logo {
-    height: 50px;
-    margin-bottom: 10px;
+  #home h1 {
+    font-size: 1.8rem;
+    line-height: 1.4;
   }
 
-  header nav {
-    display: none;
-  }
-
-  /* Filter-knapp och sök */
-  #property-filter {
-    flex-direction: column;
-    gap: 12px;
-    align-items: stretch;
-    padding: 10px;
-  }
-
-  #property-filter select,
-  #property-filter input[type="text"],
-  #property-filter button {
-    width: 100%;
+  #home p {
     font-size: 1rem;
-    padding: 10px;
+    padding: 0 10px;
   }
 
-  /* Fastighetsrutor */
-  .property-card {
+  #home .search-container {
     flex-direction: column;
     width: 100%;
-    margin: 10px auto;
+    gap: 10px;
+  }
+
+  #searchInput {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  #searchButton {
+    padding: 10px 20px;
+    font-size: 1rem;
+    width: 100%;
+  }
+
+  /* FILTER-KNAPP */
+  .filter-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  /* FILTER-POPUP */
+  .filter-popup {
+    width: 90vw;
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .filter-popup label,
+  .filter-popup input,
+  .filter-popup select {
+    width: 100%;
+    margin-bottom: 12px;
+    font-size: 1rem;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 20px 10px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+  }
+
+  /* NAVIGATION / HEADER (om den finns) */
+  header, nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* BACKDROP & BLUR-EFFEKTER */
+  .blurred {
+    backdrop-filter: blur(6px);
+  }
+
+  /* KARTA */
+  #mapImage {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+
+  /* PROPERTY GRID */
+  .property-grid {
+    grid-template-columns: 1fr;
+    padding: 0 10px;
+  }
+
+  .property-card {
+    width: 100%;
   }
 
   .property-card img {
     width: 100%;
     height: auto;
-    border-radius: 12px;
-  }
-
-  .property-info {
-    padding: 12px;
-    font-size: 0.95rem;
-  }
-
-  .property-info h3 {
-    font-size: 1.2rem;
-  }
-
-  /* Grid layout */
-  .property-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 0 10px;
-  }
-
-  /* Modal - property details */
-  .property-detail-modal {
-    width: 95vw;
-    height: 90vh;
-    padding: 16px;
-    font-size: 0.95rem;
-    border-radius: 16px;
-  }
-
-  .property-detail-modal h2 {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-  }
-
-  .property-detail-modal img {
-    width: 100%;
-    height: auto;
     border-radius: 10px;
   }
 
-  /* Filter-popup */
-  .filter-popup {
-    width: 90%;
-    padding: 20px;
-    border-radius: 20px;
-  }
-
-  .filter-popup label,
-  .filter-popup select,
-  .filter-popup input {
-    width: 100%;
-    margin-bottom: 12px;
-  }
-
-  /* Sökfel-meddelande */
-  #searchError {
-    font-size: 0.9rem;
-    text-align: center;
-    margin-top: 10px;
-  }
-
-  /* Footer */
-  footer {
-    padding: 20px;
-    font-size: 12px;
-    text-align: center;
+  .property-info {
+    font-size: 0.95rem;
   }
 }
+
+/* === Slut på mobilanpassning === */
+
 
 /* --- General Styles (keep your existing styles above this) --- */
