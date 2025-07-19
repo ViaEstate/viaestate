@@ -747,4 +747,115 @@ html, body {
   transform: translateY(0);
 }
 
+@media screen and (max-width: 768px) {
+  /* Navbar */
+  header {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  header .logo {
+    height: 50px;
+    margin-bottom: 10px;
+  }
+
+  header nav {
+    display: none;
+  }
+
+  /* Filter-knapp och sök */
+  #property-filter {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+    padding: 10px;
+  }
+
+  #property-filter select,
+  #property-filter input[type="text"],
+  #property-filter button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  /* Fastighetsrutor */
+  .property-card {
+    flex-direction: column;
+    width: 100%;
+    margin: 10px auto;
+  }
+
+  .property-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .property-info {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  .property-info h3 {
+    font-size: 1.2rem;
+  }
+
+  /* Grid layout */
+  .property-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 0 10px;
+  }
+
+  /* Modal - property details */
+  .property-detail-modal {
+    width: 95vw;
+    height: 90vh;
+    padding: 16px;
+    font-size: 0.95rem;
+    border-radius: 16px;
+  }
+
+  .property-detail-modal h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+
+  .property-detail-modal img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  /* Filter-popup */
+  .filter-popup {
+    width: 90%;
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .filter-popup label,
+  .filter-popup select,
+  .filter-popup input {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  /* Sökfel-meddelande */
+  #searchError {
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  /* Footer */
+  footer {
+    padding: 20px;
+    font-size: 12px;
+    text-align: center;
+  }
+}
+
 /* --- General Styles (keep your existing styles above this) --- */
