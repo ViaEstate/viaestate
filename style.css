@@ -747,18 +747,20 @@ html, body {
   transform: translateY(0);
 }
 
+
 /* === Din ursprungliga CSS är bevarad === */
 /* Nedan läggs till sist i din style.css för att mobilanpassa sidan */
 
+/* === Din ursprungliga CSS är bevarad === */
+/* Nedan läggs till sist i din style.css för att mobilanpassa sidan och lägga till levande effekter */
+
 @media screen and (max-width: 768px) {
-  /* BODY */
   body {
     padding: 0;
     margin: 0;
     overflow-x: hidden;
   }
 
-  /* HERO SEKTION */
   #home {
     flex-direction: column;
     gap: 20px;
@@ -795,14 +797,12 @@ html, body {
     width: 100%;
   }
 
-  /* FILTER-KNAPP */
   .filter-button {
     width: 100%;
     padding: 12px;
     font-size: 1rem;
   }
 
-  /* FILTER-POPUP */
   .filter-popup {
     width: 90vw;
     padding: 20px;
@@ -817,7 +817,6 @@ html, body {
     font-size: 1rem;
   }
 
-  /* SECTIONS */
   section {
     padding: 20px 10px;
   }
@@ -831,33 +830,28 @@ html, body {
     line-height: 1.5;
   }
 
-  /* FOOTER */
   footer {
     text-align: center;
     padding: 20px;
     font-size: 0.9rem;
   }
 
-  /* NAVIGATION / HEADER (om den finns) */
   header, nav {
     flex-direction: column;
     align-items: center;
     gap: 10px;
   }
 
-  /* BACKDROP & BLUR-EFFEKTER */
   .blurred {
     backdrop-filter: blur(6px);
   }
 
-  /* KARTA */
   #mapImage {
     width: 100%;
     height: auto;
     max-width: 100%;
   }
 
-  /* PROPERTY GRID */
   .property-grid {
     grid-template-columns: 1fr;
     padding: 0 10px;
@@ -878,7 +872,57 @@ html, body {
   }
 }
 
-/* === Slut på mobilanpassning === */
+/* === Hover- och levande effekter === */
+.property-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.property-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+button, .filter-button, #searchButton {
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover, .filter-button:hover, #searchButton:hover {
+  transform: scale(1.02);
+  background: #ccc;
+}
+
+/* === Räknar-animation (counter) === */
+.counter {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #d4af37;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+/* === Bakgrundsvideo-stil (läggs till i HTML) === */
+#backgroundVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(0.6);
+}
+
+/* === AOS animationer === */
+[data-aos] {
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-duration: 1s;
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: none;
+}
 
 
 /* --- General Styles (keep your existing styles above this) --- */
