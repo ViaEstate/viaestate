@@ -323,3 +323,12 @@ modalContactForm.addEventListener("submit", function(e) {
   });
 
 });
+function openContactForm(propertyId) {
+  const modal = document.getElementById('contact-modal');
+  modal.style.display = 'flex';
+  document.getElementById('property-id').value = propertyId;
+}
+
+function closeModal() {
+  document.getElementById('contact-modal').style.display = 'none';
+}
