@@ -397,13 +397,7 @@ h2 {
 }
 
 /* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #1f1f1f;
-  color: #aaa;
-  font-size: 14px;
-}
+
 
 /* Contact */
 form {
@@ -449,13 +443,7 @@ html, body {
   flex-direction: column;
   min-height: 100vh;
 }
-.footer {
-  background-color: #000;
-  color: white;
-  text-align: center;
-  padding: 20px 0;
-  font-size: 14px;
-}
+
 
 /* Hamburger menu */
 .hamburger {
@@ -830,11 +818,7 @@ html, body {
     line-height: 1.5;
   }
 
-  footer {
-    text-align: center;
-    padding: 20px;
-    font-size: 0.9rem;
-  }
+
 
   header, nav {
     flex-direction: column;
@@ -870,7 +854,13 @@ html, body {
   .property-info {
     font-size: 0.95rem;
   }
-}
+   .property-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+
 
 /* === Hover- och levande effekter === */
 .property-card {
@@ -924,5 +914,19 @@ button:hover, .filter-button:hover, #searchButton:hover {
   transform: none;
 }
 
+body {
+  padding-bottom: 100px; /* Gör plats för footern när sidan är kort */
+}
 
 /* --- General Styles (keep your existing styles above this) --- */
+  .footer {
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        padding: 1rem;
+        margin-top: 2rem;
+        position: relative;
+        width: 100%;
+      }
+
+   
