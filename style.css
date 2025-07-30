@@ -1,4 +1,11 @@
 /* Reset & theme */
+/* Layout */
+.tab-content.active {
+  display: block;
+  min-height: calc(100vh - 120px); /* justera 120px efter headerns höjd */
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -189,11 +196,12 @@ a, button, input, textarea {
   display: none;
   padding: 40px;
   animation: fadeIn 0.6s ease-in;
-  flex: 1;
+  flex: 1 1 100%;
 }
 .tab-content.active {
   display: block;
 }
+
 h2 {
   color: #fff;
   font-size: 32px;
@@ -429,20 +437,7 @@ button[type="submit"]:hover {
   background: #ddd;
 }
 
-/* Layout */
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-}
-.page-wrapper {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+
 
 
 /* Hamburger menu */
@@ -929,4 +924,187 @@ body {
         width: 100%;
       }
 
-   
+ /* Your original CSS remains untouched here */
+
+/* === START: Fixar för scroll och mobilanpassning === */
+.property-card .description {
+  max-height: 120px;
+  overflow-y: auto;
+  padding-right: 8px;
+  scrollbar-width: thin;
+}
+
+.property-card .description::-webkit-scrollbar {
+  width: 6px;
+}
+
+.property-card .description::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .property-card {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+  }
+
+  .property-card h3 {
+    font-size: 1.2rem;
+    margin-top: 12px;
+  }
+
+  .property-card .description {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+}
+
+html, body {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: auto;
+  overflow-x: hidden;
+}
+/* === END: Fixar för scroll och mobilanpassning === */
+
+/* === START: Popup/modal scrollfix === */
+.property-detail {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.property-content {
+  background: #fff;
+  max-height: 90vh;
+  width: 90vw;
+  overflow-y: auto;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.property-content::-webkit-scrollbar {
+  width: 6px;
+}
+.property-content::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .property-content {
+    width: 95vw;
+    height: 85vh;
+    max-height: 85vh;
+  }
+}
+
+.popup-description {
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 8px;
+  font-size: 1rem;
+  color: #ddd;
+  scrollbar-width: thin;
+}
+
+.popup-description::-webkit-scrollbar {
+  width: 5px;
+}
+.popup-description::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+/* === BLUR === */
+.blur-overlay {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  display: none;
+}
+.blur-overlay.active {
+  display: block;
+}
+
+/* === MODAL === */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 20, 20, 0.85);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-content {
+  background: #434343;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow: auto;
+  padding: 20px;
+  position: relative;
+}
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+.close-btn:hover {
+  color: #007aff;
+}
+
+/* === KONTAKTFORM I MODAL === */
+.modal-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+.modal-contact-form.visible {
+  opacity: 1;
+  max-height: 200px;
+}
+.modal-contact-form input,
+.modal-contact-form button {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+}
+.modal-contact-form button {
+  background: #007aff;
+  color: #fff;
+  cursor: pointer;
+}
+.modal-contact-form button:hover {
+  background: #339aff;
+}
