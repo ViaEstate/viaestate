@@ -9,7 +9,7 @@
 </head>
 <body>
 <main>
-<div id="blurOverlay" class="blur-overlay hidden"></div>
+<div id="blurOverlay" class="blur-overlay"></div>
 
 
 <header>
@@ -187,6 +187,7 @@ Ground = 35 m2 en suite bedroom with 4 m2 shower room (shower, washbasin, WC) + 
   data-population="">
   <img src="https://realestateoccitanie.com/wp-content/uploads/2025/07/PUI299000EA-900x623.jpg" alt="Puimisson House" />
   <h3>Property in Puimisson</h3>
+  <p class="description"></p>
   <p>Price: €299,000</p>
 </div>
 <div class="property-card"
@@ -386,12 +387,14 @@ The prices are inclusive of agents fees (paid by the vendors). The notaire's fee
   <h3>Property in Saint Chinian</h3>
   <p>Price: €865,000</p>
 </div>
-    <!-- Add more property cards as needed -->
-  </div>
+  
+    </div>
   <p id="noResultsMessage" class="no-results" style="display:none;">We haven't reached this location yet. Stay tuned!</p>
 </section>
-
-  <section id="about" class="tab-content">
+  
+    </div>
+  </div>
+  <section id="about" class="tab-content active">
     <h2>About Us</h2>
     <p>ViaEstate was founded in the summer of 2025 with a bold vision – to transform how real estate is marketed and sold across Europe.</p>
     <p>We don’t just provide a platform – we set a new standard. Real estate companies partner with ViaEstate to showcase their properties through a refined, user-focused experience. We are the go-to marketplace for residential properties in Europe, where buyers and sellers connect seamlessly and securely.</p>
@@ -400,7 +403,7 @@ The prices are inclusive of agents fees (paid by the vendors). The notaire's fee
     <p>ViaEstate is not just part of the market – we redefine it. We are your trusted partner in European real estate.</p>
   </section>
 
-  <section id="contact" class="tab-content">
+  <section id="contact" class="tab-content active">
     <h2>Contact Us</h2>
     <form id="contact-form">
       <label>Name</label>
@@ -414,7 +417,7 @@ The prices are inclusive of agents fees (paid by the vendors). The notaire's fee
     <p id="form-status" style="text-align:center; margin-top:1rem;"></p>
   </section>
 
-  <section id="vault" class="tab-content">
+  <section id="vault" class="tab-content active">
     <h2>The Vault – FAQ</h2>
     <p>Explore key insights about the property buying journey across Europe – from financing to legal considerations.</p>
     <div class="faq-grid">
@@ -493,33 +496,38 @@ The prices are inclusive of agents fees (paid by the vendors). The notaire's fee
   
   
   <!-- Property Detail Modal -->
-<div id="propertyDetail" class="property-detail-modal hidden">
-    <button id="closePropertyDetail" class="close-detail">&times;</button>
-    <div class="modal-content">
-      <div id="statusMessage" class="status-message"></div>
+<div id="propertyDetail" class="modal hidden">
+  <div class="modal-content">
+    <button id="closePropertyDetail" class="close-btn">&times;</button>
 
-      <div class="modal-images">
-        <button class="modal-arrow left" id="prevImage">&#8592;</button>
-        <div id="modalImageWrapper">
-          <img id="modalImage" src="" alt="Property image" />
-        </div>
-        <button class="modal-arrow right" id="nextImage">&#8594;</button>
+    <div id="statusMessage" class="status-message"></div>
+
+    <div class="modal-images">
+      <button class="modal-arrow left" id="prevImage">&#10094;</button>
+      <div id="modalImageWrapper">
+        <img id="modalImage" src="" alt="Property image" />
       </div>
-      <div class="modal-description">
-        <h2 id="modalTitle"></h2>
-        <p id="modalDescription"></p>
-        <p id="modalPrice"></p>
-        <div id="modalContactSection" class="modal-contact-section">
-          <button id="openContactForm" class="contact-btn">Contact</button>
-          <form id="modalContactForm" class="modal-contact-form hidden">
-            <input type="email" name="user_email" placeholder="Your Email" required />
-            <button type="submit">Send</button>
-            <span id="modalContactStatus" class="modal-contact-status"></span>
-          </form>
-        </div>
+      <button class="modal-arrow right" id="nextImage">&#10095;</button>
+    </div>
+
+    <div class="modal-description">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+      <p id="modalPrice"></p>
+
+      <div id="modalContactSection" class="modal-contact-section">
+        <button id="openContactForm" class="contact-btn">Contact</button>
+
+        <form id="modalContactForm" class="modal-contact-form hidden">
+          <input type="email" name="user_email" id="modalContactEmail" placeholder="Your Email" required />
+          <button type="submit">Send</button>
+          <span id="modalContactStatus" class="modal-contact-status"></span>
+        </form>
       </div>
     </div>
   </div>
+</div>
+
 
 </div>
 <main>
@@ -533,6 +541,7 @@ The prices are inclusive of agents fees (paid by the vendors). The notaire's fee
 
     const contactForm = document.getElementById("contact-form");
     const contactStatus = document.getElementById("form-status");
+    const modalContactForm = document.getElementById("modalContactForm");
 
     if (contactForm) {
       contactForm.addEventListener("submit", function (e) {
