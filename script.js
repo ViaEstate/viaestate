@@ -332,3 +332,8 @@ function openContactForm(propertyId) {
 function closeModal() {
   document.getElementById('contact-modal').style.display = 'none';
 }
+document.querySelectorAll(".nav-links button").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+});
