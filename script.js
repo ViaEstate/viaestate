@@ -182,11 +182,15 @@ document.querySelectorAll('.back-btn').forEach(btn => {
 });
 
 // --- MOBILE NAV TOGGLE ---
-const navLinks = document.querySelector(".nav-links");
-document.getElementById("hamburgerBtn").addEventListener("click", () => {
-  navLinks.classList.toggle("active");
-  navLinks.classList.toggle("mobile");
-});
+document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+
+    hamburger.addEventListener("click", function () {
+      navLinks.classList.toggle("mobile");
+      navLinks.classList.toggle("active");
+    });
+  });
 
 // --- COUNTRY FILTER ONLY ---
 document.getElementById("countryFilter").addEventListener("change", function () {
