@@ -1108,3 +1108,107 @@ html, body {
 .modal-contact-form button:hover {
   background: #339aff;
 }
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 20px;
+  }
+
+  .logo {
+    margin-left: 0;
+    height: 60px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links.mobile {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #1f1f1f;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 10px 20px;
+    z-index: 15;
+  }
+
+  .nav-links.mobile.active {
+    display: flex;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .search-container {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .search-container input {
+    width: 100%;
+  }
+
+  .filter-row {
+    flex-direction: column;
+  }
+
+  .filter-input,
+  .filter-button {
+    width: 100%;
+  }
+
+  .property-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-description {
+    padding: 16px 12px;
+  }
+
+  .modal-images {
+    height: 180px;
+  }
+
+  #modalTitle {
+    font-size: 1.5rem;
+  }
+
+  #modalDescription {
+    font-size: 1rem;
+  }
+
+  #modalPrice {
+    font-size: 1rem;
+  }
+
+  .contact-btn {
+    width: 100%;
+  }
+
+  .modal-contact-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .modal-contact-form input[type="email"],
+  .modal-contact-form button[type="submit"] {
+    width: 100%;
+  }
+}
