@@ -5,7 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ViaEstate – Properties</title>
   <link rel="stylesheet" href="style.css" />
-  
+  <!-- Icons (Font Awesome) -->
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+  /* Social links – används i Contact och footer */
+  .social-icons { display:flex; gap:.75rem; align-items:center; flex-wrap:wrap; }
+  .social-icons a {
+    display:inline-flex; align-items:center; justify-content:center;
+    width:40px; height:40px; border-radius:9999px; text-decoration:none;
+    background:#1f2937; color:#fff; font-size:1.05rem; transition:transform .15s ease, opacity .15s ease;
+  }
+  .social-icons a:hover { transform:translateY(-2px); opacity:.9; }
+  .social-icons a[aria-label*=Facebook] { background:#1877F2; }
+  .social-icons a[aria-label*=Instagram] { background:#E1306C; }
+  .social-icons a[aria-label*=WhatsApp] { background:#25D366; }
+
+  /* Footer layout (enkel och responsiv) */
+  .footer { background:#0b0f17; color:#e6eaf2; padding:40px 24px; }
+  .footer .footer-grid {
+    display:grid; gap:24px; align-items:start;
+    grid-template-columns: 1.5fr 1fr;
+  }
+  .footer .brand { display:flex; gap:.75rem; align-items:center; }
+  .footer .brand img { height:36px; width:auto; }
+  .footer .muted { opacity:.8; margin:.25rem 0 1rem; line-height:1.5; }
+  .footer .mini { font-size:.875rem; opacity:.7; margin-top:12px; }
+  @media (max-width: 720px) { .footer .footer-grid { grid-template-columns: 1fr; } }
+
+  /* “Contact Us” social-del */
+  .contact-social { margin-top:18px; text-align:center; }
+  .contact-social h3 { margin-bottom:.5rem; }
+</style>
+
 </head>
 <body>
 <main>
@@ -19,7 +53,7 @@
     <ul class="nav-links">
       <li><button class="nav-btn active" data-tab="home">Home</button></li>
       <li><button class="nav-btn" data-tab="properties">Properties</button></li>
-      <li><button class="nav-btn" data-tab="vault">The Vault</button></li>
+      <li><button class="nav-btn" data-tab="blog">Blog</button></li>
       <li><button class="nav-btn" data-tab="about">About</button></li>
       <li><button class="nav-btn" data-tab="contact">Contact</button></li>
     </ul>
@@ -513,82 +547,79 @@ The prices are inclusive of agents fees (paid by the vendors). The notaire's fee
       <button type="submit">Send</button>
     </form>
     <p id="form-status" style="text-align:center; margin-top:1rem;"></p>
+    <div class="contact-social" aria-label="Social links">
+
+</div>
+
   </section>
 
-  <section id="vault" class="tab-content active">
-    <h2>The Vault – FAQ</h2>
-    <p>Explore key insights about the property buying journey across Europe – from financing to legal considerations.</p>
-    <div class="faq-grid">
-      <div class="faq-card" data-tab="faq-buying-process"><h3>How does the buying process work?</h3></div>
-      <div class="faq-card" data-tab="faq-mortgage"><h3>Where can I apply for a mortgage?</h3></div>
-      <div class="faq-card" data-tab="faq-inspection"><h3>Do I need a home inspection?</h3></div>
-      <div class="faq-card" data-tab="faq-documents"><h3>What documents are required?</h3></div>
-    </div>
-  </section>
+  <section id="blog" class="tab-content">
+  <div class="blog-wrap">
+    <header class="blog-topbar">
+      <div class="blog-brand">
+        <img src="img/logo-viaestate.png" alt="ViaEstate" />
+        <div>
+          <h2>ViaEstate Blog</h2>
+          <p class="blog-tagline">Insights on European property transactions – clear, concise, practical.</p>
+        </div>
+      </div>
 
-  <section id="faq-buying-process" class="tab-content">
-    <button class="back-btn" onclick="setActiveTab('vault')">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <polyline points="15 18 9 12 15 6"></polyline>
-      </svg>
-      Back
-    </button>
-    <h2>How does the buying process work?</h2>
-    <p>The buying process varies by country, but typically includes property selection, offer submission, legal review, signing of contracts, and final payment. We guide you at every step to ensure a secure transaction.</p>
-    <div class="logo-container"><img src="img/logo-viaestate.png" alt="ViaEstate Logo" /></div>
-  </section>
+      <div class="blog-controls">
+        <div class="blog-search">
+          <input id="blogSearch" type="search" placeholder="Search articles (country, topic, keyword)..." aria-label="Search articles">
+          <button id="blogClear" class="blog-icon-btn" title="Clear search" aria-label="Clear search">✕</button>
+        </div>
 
-  <section id="faq-mortgage" class="tab-content">
-    <button class="back-btn" onclick="setActiveTab('vault')">
-  <h2>How does the buying process work?</h2>
-  <p>The buying process varies by country, but typically includes property selection, offer submission, legal review, signing of contracts, and final payment. We guide you at every step to ensure a secure transaction.</p>
-  <div class="logo-container"><img src="img/logo-viaestate.png" alt="ViaEstate Logo" /></div>
-</section>
+        <select id="blogSort" aria-label="Sort">
+          <option value="date_desc">Newest</option>
+          <option value="date_asc">Oldest</option>
+          <option value="pop_desc">Most popular</option>
+        </select>
+      </div>
+      
+    </header>
 
-<section id="faq-mortgage" class="tab-content">
-  <button class="back-btn" onclick="setActiveTab('vault')">
-  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <polyline points="15 18 9 12 15 6"></polyline>
-  </svg>
-  Back
-</button>
-  <h2>Where can I apply for a mortgage?</h2>
-  <p>ViaEstate partners with international lenders to help you explore your mortgage options, even as a non-resident. Contact us to connect with the right institutions for your needs.</p>
-  <div class="logo-container"><img src="img/logo-viaestate.png" alt="ViaEstate Logo" /></div>
-</section>
+    <nav class="blog-chips" aria-label="Categories" id="blogChips">
+      <!-- Filled dynamically by JS -->
+    </nav>
 
-<section id="faq-inspection" class="tab-content">
-  <button class="back-btn" onclick="setActiveTab('vault')">
-  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <polyline points="15 18 9 12 15 6"></polyline>
-  </svg>
-  Back
-</button>
+    <section id="blogFeatured" class="blog-featured" aria-label="Featured article">
+      <!-- Rendered by JS -->
+    </section>
 
-  <h2>Do I need a home inspection?</h2>
-  <p>An independent inspection evaluates the structure, systems, and safety of the property before purchase. This helps you understand the true condition and avoid unexpected costs.</p>
-  <div class="logo-container"><img src="img/logo-viaestate.png" alt="ViaEstate Logo" /></div>
-</section>
+    <main>
+      <div id="blogGrid" class="blog-grid" aria-live="polite" aria-busy="false"></div>
 
-<section id="faq-documents" class="tab-content">
- <button class="back-btn" onclick="setActiveTab('vault')">
-  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <polyline points="15 18 9 12 15 6"></polyline>
-  </svg>
-  Back
-</button>
+      <div class="blog-pagination">
+        <button id="blogPrev" class="blog-btn" disabled>Previous</button>
+        <span id="blogPageInfo" class="blog-muted">Page 1</span>
+        <button id="blogNext" class="blog-btn">Next</button>
+      </div>
 
-  <h2>What documents are required?</h2>
-  <p>You will typically need identification, proof of funds, and signed contracts. We provide clear checklists for every country we operate in.</p>
-  <div class="logo-container"><img src="img/logo-viaestate.png" alt="ViaEstate Logo" /></div>
-</section>
-
-
-    <section id="faq-mortgage" class="tab-content">...</section>
-    <section id="faq-inspection" class="tab-content">...</section>
-    <section id="faq-documents" class="tab-content">...</section>
-
+      <p id="blogEmpty" class="blog-empty" hidden>No results found for your search.</p>
+    </main>
   </div>
+
+  <!-- Reader modal -->
+  <dialog id="blogReader" class="blog-reader">
+    <article class="reader-article">
+      <button id="blogReaderClose" class="blog-icon-btn reader-close" aria-label="Close">✕</button>
+      <div class="reader-progress" id="blogReadProgress"></div>
+      <header class="reader-head">
+        <div class="reader-eyebrow" id="readerCategory"></div>
+        <h1 id="readerTitle"></h1>
+        <div class="reader-meta" id="readerMeta"></div>
+      </header>
+      <img id="readerCover" alt="" loading="lazy" />
+      <div id="readerBody" class="reader-prose"></div>
+      <footer class="reader-footer">
+        <button id="blogShare" class="blog-btn lite">Share</button>
+      </footer>
+    </article>
+  </dialog>
+</section>
+
+
   <!-- WRAPPER END -->
 
   
@@ -683,8 +714,41 @@ The prices are inclusive of agents fees (paid by the vendors). The notaire's fee
   });
 </script>
 <footer class="footer">
-  <p>© 2025 ViaEstate. All rights reserved.</p>
+  <div class="footer-grid">
+    <div>
+      <div class="brand">
+        <img src="img/logo-viaestate.png" alt="ViaEstate logo" />
+        <strong>ViaEstate</strong>
+      </div>
+      <p class="muted">Trusted partner for residential real estate across Europe.</p>
+
+      <div class="social-icons" aria-label="Social links">
+        <a href="https://www.facebook.com/profile.php?id=61579269959759" target="_blank" rel="noopener" aria-label="Facebook">
+          <i class="fab fa-facebook-f" aria-hidden="true"></i>
+        </a>
+        <a href="https://instagram.com/viaestate_" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="fab fa-instagram" aria-hidden="true"></i>
+        </a>
+        <a href="https://wa.me/46767769848" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <p class="mini">© 2025 ViaEstate. All rights reserved.</p>
+    </div>
+
+    <div>
+      <div class="mini">
+        <div><strong>Contact</strong></div>
+        <div>Email: info.viaestate@gmail.com</div>
+        <div>Phone: +46 76 273 43 07</div>
+        <div>Phone: +46 76 776 98 48</div>
+      
+      </div>
+    </div>
+  </div>
 </footer>
+
 <script src="script.js"></script>
 <script src="countryCityLogic.js"></script>
 <div id="statusMessage" class="status-message"></div>
