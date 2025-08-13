@@ -341,3 +341,210 @@ document.querySelectorAll(".nav-links button").forEach((btn) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 });
+/* --- VIAESTATE BLOG --- */
+(function(){
+  const posts = [
+    {
+      id: "occitanie-2025-real-estate",
+      title: "Why Occitanie Is a Smart Bet for Real Estate in 2025",
+      summary: "Affordable prices, sunny climate, strong second-home market and international interest in Occitanie.",
+      body: `
+  <p>Occitanie offers sun-drenched landscapes, historic villages and dynamic cities. It now leads France in second-home ownership, with about 501 000 secondary residences—roughly 16 % of the national total.</p>
+  <p>Median house prices in Occitanie average €2 287/m²—well below the Côte d’Azur—making it a highly attractive value market.</p>
+  <p>A third of homes in Aude are second residences; coastal and rural areas draw both domestic and international buyers thanks to climate, culture and accessibility.</p>
+  <p>Despite a national slowdown in 2023, second-home purchases by US buyers rose 39 % in Occitanie; UK, Belgian and German interest remains strong.</p>
+`,
+
+      category: "France",
+      author: "ViaEstate",
+      date: "2025-08-13",
+      readMin: 4,
+      image: "https://images.unsplash.com/photo-1699611466985-ab04e05d5579?q=80&w=1182&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      views: 620
+    },
+    
+   
+  ];
+    
+  
+
+  // --- DOM refs
+  const grid = document.getElementById("blogGrid");
+  const chips = document.getElementById("blogChips");
+  const featured = document.getElementById("blogFeatured");
+  const searchInput = document.getElementById("blogSearch");
+  const clearBtn = document.getElementById("blogClear");
+  const sortSelect = document.getElementById("blogSort");
+  const prevBtn = document.getElementById("blogPrev");
+  const nextBtn = document.getElementById("blogNext");
+  const pageInfo = document.getElementById("blogPageInfo");
+  const emptyMsg = document.getElementById("blogEmpty");
+
+  // Reader
+  const reader = document.getElementById("blogReader");
+  const readerClose = document.getElementById("blogReaderClose");
+  const readerTitle = document.getElementById("readerTitle");
+  const readerMeta = document.getElementById("readerMeta");
+  const readerBody = document.getElementById("readerBody");
+  const readerCover = document.getElementById("readerCover");
+  const readerCategory = document.getElementById("readerCategory");
+  const readerProgress = document.getElementById("blogReadProgress");
+  const shareBtn = document.getElementById("blogShare");
+
+  // --- State
+  let state = {
+    q: "",
+    cat: "Alla",
+    sort: "date_desc",
+    page: 1,
+    perPage: 6
+  };
+
+  const categories = ["Alla", ...Array.from(new Set(posts.map(p => p.category)))];
+
+  function applyFilters(){
+    let list = posts.slice();
+
+    // search
+    if(state.q){
+      const q = state.q.toLowerCase();
+      list = list.filter(p =>
+        p.title.toLowerCase().includes(q) ||
+        p.summary.toLowerCase().includes(q) ||
+        p.category.toLowerCase().includes(q)
+      );
+    }
+    // category
+    if(state.cat !== "Alla"){
+      list = list.filter(p => p.category === state.cat);
+    }
+    // sort
+    if(state.sort === "date_desc") list.sort((a,b)=> new Date(b.date)-new Date(a.date));
+    if(state.sort === "date_asc") list.sort((a,b)=> new Date(a.date)-new Date(b.date));
+    if(state.sort === "pop_desc") list.sort((a,b)=> b.views-a.views);
+
+    return list;
+  }
+
+  function renderChips(){
+    chips.innerHTML = "";
+    categories.forEach(cat=>{
+      const btn = document.createElement("button");
+      btn.className = "chip" + (state.cat===cat ? " is-active":"");
+      btn.textContent = cat;
+      btn.addEventListener("click", ()=>{
+        state.cat = cat;
+        state.page = 1;
+        render();
+      });
+      chips.appendChild(btn);
+    });
+  }
+
+  function renderFeatured(list){
+    if(!list.length){ featured.innerHTML=""; return; }
+    const top = list[0];
+    featured.innerHTML = `
+      <article class="card">
+        <img src="${top.image}" alt="">
+        <div class="card-body">
+          <div class="blog-eyebrow">${top.category}</div>
+          <h3>${top.title}</h3>
+          <p>${top.summary}</p>
+          <div class="blog-meta">${formatDate(top.date)} · ${top.readMin} min</div>
+          <div style="margin-top:10px">
+            <button class="blog-btn gold" data-read="${top.id}">Read</button>
+          </div>
+        </div>
+      </article>
+    `;
+    featured.querySelector("[data-read]").addEventListener("click", ()=>openReader(top.id));
+  }
+
+  function renderGrid(list){
+    grid.setAttribute("aria-busy","true");
+    grid.innerHTML = "";
+    const start = (state.page-1)*state.perPage;
+    const pageItems = list.slice(start, start + state.perPage);
+
+    pageItems.forEach(p=>{
+      const card = document.createElement("article");
+      card.className = "blog-card";
+      card.innerHTML = `
+        <img src="${p.image}" alt="">
+        <div class="card-body">
+          <div class="blog-eyebrow">${p.category}</div>
+          <h3>${p.title}</h3>
+          <p>${p.summary}</p>
+          <div class="blog-meta">${formatDate(p.date)} · ${p.readMin} min</div>
+          <div>
+            <button class="blog-btn" data-read="${p.id}">Läs</button>
+          </div>
+        </div>
+      `;
+      card.querySelector("[data-read]").addEventListener("click", ()=>openReader(p.id));
+      grid.appendChild(card);
+    });
+
+    grid.setAttribute("aria-busy","false");
+  }
+
+  function renderPagination(total){
+    const pages = Math.max(1, Math.ceil(total / state.perPage));
+    prevBtn.disabled = state.page <= 1;
+    nextBtn.disabled = state.page >= pages;
+    pageInfo.textContent = `Sida ${state.page} / ${pages}`;
+  }
+
+  function render(){
+    renderChips();
+    const list = applyFilters();
+    emptyMsg.hidden = list.length > 0;
+    renderFeatured(list);
+    renderGrid(list);
+    renderPagination(list.length);
+  }
+
+  function openReader(id){
+    const p = posts.find(x=>x.id===id);
+    if(!p) return;
+    readerTitle.textContent = p.title;
+    readerMeta.textContent = `${p.author} · ${formatDate(p.date)} · ${p.readMin} min`;
+    readerBody.innerHTML = p.body;
+    readerCover.src = p.image;
+    readerCover.alt = p.title;
+    readerCategory.textContent = p.category;
+    reader.showModal();
+    readerProgress.style.width = "0";
+    readerBody.scrollTop = 0;
+  }
+
+  function formatDate(d){
+    const date = new Date(d);
+    return date.toLocaleDateString("sv-SE", { year:"numeric", month:"short", day:"2-digit" });
+  }
+
+  // events
+  searchInput.addEventListener("input", (e)=>{ state.q = e.target.value.trim(); state.page=1; render(); });
+  clearBtn.addEventListener("click", ()=>{ searchInput.value=""; state.q=""; state.page=1; render(); });
+  sortSelect.addEventListener("change", (e)=>{ state.sort = e.target.value; state.page=1; render(); });
+  prevBtn.addEventListener("click", ()=>{ if(state.page>1){ state.page--; render(); }});
+  nextBtn.addEventListener("click", ()=>{ state.page++; render(); });
+
+  readerClose.addEventListener("click", ()=> reader.close());
+  reader.addEventListener("close", ()=>{ readerProgress.style.width = "0"; });
+  readerBody.addEventListener("scroll", ()=>{
+    const el = readerBody;
+    const pct = (el.scrollTop) / (el.scrollHeight - el.clientHeight);
+    readerProgress.style.width = (Math.min(1, Math.max(0,pct)) * 100) + "%";
+  });
+  if(shareBtn && navigator.share){
+    shareBtn.addEventListener("click", ()=>{
+      const title = readerTitle.textContent;
+      navigator.share({ title, text: title, url: location.href }).catch(()=>{});
+    });
+  }
+
+  // init
+  render();
+})();
