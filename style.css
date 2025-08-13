@@ -31,6 +31,11 @@ a, button, input, textarea {
   z-index: 1000;
   display: none;
 }
+#home {
+  overflow: hidden;
+  height: 100vh;
+  position: relative; /* för säkerhets skull */
+}
 
 /* Navbar */
 .navbar {
@@ -1211,4 +1216,81 @@ html, body {
   .modal-contact-form button[type="submit"] {
     width: 100%;
   }
+}
+
+/* --- VIAESTATE BLOG (isolerade klasser) --- */
+.blog-wrap{max-width:1100px;margin:0 auto;padding:24px}
+.blog-topbar{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:16px}
+.blog-brand{display:flex;gap:12px;align-items:center}
+.blog-brand img{width:40px;height:40px;object-fit:contain}
+.blog-tagline{margin:2px 0 0;color:#a6a7a9;font-size:.95rem}
+.blog-controls{display:flex;gap:12px;align-items:center}
+.blog-search{position:relative;display:flex;align-items:center}
+.blog-search input{padding:10px 36px 10px 12px;border:1px solid #e5e7eb;border-radius:10px;min-width:260px}
+.blog-icon-btn{border:none;background:#f3f4f6;border-radius:10px;padding:8px;cursor:pointer}
+.blog-icon-btn:hover{background:#e5e5eb}
+.blog-search button{position:absolute;right:4px}
+.blog-chips{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 20px}
+.blog-chips .chip{border:1px solid #e5e7eb;border-radius:999px;padding:8px 12px;background:#fff;cursor:pointer}
+.blog-chips .chip.is-active{background:#111827;color:#fff;border-color:#111827}
+.blog-featured{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;margin-bottom:20px}
+.blog-featured .card{border:1px solid #656971;border-radius:16px;overflow:hidden;background:#fff;display:grid;grid-template-columns:1fr}
+.blog-featured img{width:100%;height:260px;object-fit:cover}
+.blog-featured .card-body{padding:16px}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.blog-card{border:1px solid #e5e7eb;border-radius:16px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.blog-card img{width:100%;height:180px;object-fit:cover}
+.blog-card .card-body{padding:14px;display:flex;flex-direction:column;gap:8px}
+.blog-eyebrow{font-size:.8rem;color:#6b7280}
+.blog-meta{font-size:.85rem;color:#6b7280}
+.blog-btn{border:1px solid #e5e7eb;background:#fff;border-radius:10px;padding:10px 14px;cursor:pointer}
+.blog-btn.gold{background:#111827;color:#fff;border-color:#111827}
+.blog-btn.lite{background:#96aedf}
+.blog-pagination{display:flex;align-items:center;gap:10px;justify-content:center;margin:20px 0}
+.blog-empty{color:#6b7280;text-align:center;margin:24px 0}
+.blog-muted{color:#6b7280}
+@media (max-width:1000px){.blog-featured{grid-template-columns:1fr}}
+@media (max-width:800px){.blog-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:540px){.blog-grid{grid-template-columns:1fr}.blog-search input{min-width:unset;width:100%}}
+/* Reader modal */
+.blog-reader {
+  max-width: 760px; /* mer fokuserad läsbredd */
+}
+.reader-article{position:relative}
+.reader-close{position:absolute;right:10px;top:10px}
+.reader-progress{height:4px;background:#111827;width:0}
+.reader-head{padding:16px 16px 0}
+.reader-eyebrow{color:#000000;font-size:.85rem}
+.reader-meta{color:#000000;font-size:.9rem;margin-top:6px}
+.reader-prose p {
+  margin: 0 0 0.6em; /* mindre bottom margin */
+  line-height: 1.5; /* kompakt men läsbart */
+}
+
+.reader-prose h2 {
+  margin: 1em 0 0.4em;
+  font-size: 1.2rem;
+}
+.reader-prose ul{padding-left:18px}
+.reader-footer{display:flex;justify-content:flex-end;padding:0 16px 16px}
+/* Sort-select: gör bakgrund blå istället för vit */
+.blog-controls select {
+  background-color: #3b82f6;      /* Blå bakgrund */
+  color: rgb(0, 0, 0);                   /* Vit text */
+  border: 1px solid #3b82f6;
+}
+
+/* Och på hover/focus */
+.blog-controls select:focus,
+.blog-controls select:hover {
+  background-color: #2563eb;      /* Mörkare blå */
+  border-color: #2563eb;
+}
+
+.reader-article img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1em;
+  object-fit: cover;
 }
