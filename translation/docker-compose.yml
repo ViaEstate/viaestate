@@ -1,0 +1,24 @@
+services:
+  libretranslate:
+    image: libretranslate/libretranslate:latest
+    container_name: libretranslate
+    ports:
+      - "5001:5000"
+    environment:
+      # Only load required languages (remove hr if not available)
+      - LT_LOAD_ONLY=fr,en,es,de,sv,nb,da,fi,it
+      - LT_API_KEY=my-api-key-123  # Replace with your actual API key
+    restart: unless-stopped
+    # Remove volume to avoid permission issues, or use a host-mounted volume with proper permissions
+    # volumes:
+    #   - libretranslate_data:/home/libretranslate/.local/share/LibreTranslate
+    user: root
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+# volumes:
+#   libretranslate_data:
+#     driver: local

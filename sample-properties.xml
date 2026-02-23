@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+  <property>
+    <title>Luxury Villa with Sea View</title>
+    <description>A beautiful luxury villa with stunning panoramic sea views. This modern property features high-end finishes, spacious living areas, and direct beach access. Perfect for those seeking luxury coastal living.</description>
+    <country>Spain</country>
+    <city>Barcelona</city>
+    <price>850000</price>
+    <property_type>villa</property_type>
+    <bedrooms>4</bedrooms>
+    <bathrooms>3</bathrooms>
+    <area>250</area>
+    <plot_area>1000</plot_area>
+    <distance_to_city>5000</distance_to_city>
+    <distance_to_sea>200</distance_to_sea>
+    <distance_to_lake>1500</distance_to_lake>
+    <images>
+      <image>https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800</image>
+      <image>https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800</image>
+      <image>https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800</image>
+    </images>
+    <videos>
+      <video>https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4</video>
+    </videos>
+  </property>
+
+  <property>
+    <title>Modern Apartment in City Center</title>
+    <description>Contemporary apartment in the heart of the city. Features floor-to-ceiling windows, smart home technology, and proximity to all amenities. Ideal for urban professionals.</description>
+    <country>Sweden</country>
+    <city>Stockholm</city>
+    <price>450000</price>
+    <property_type>apartment</property_type>
+    <bedrooms>2</bedrooms>
+    <bathrooms>1</bathrooms>
+    <area>85</area>
+    <plot_area></plot_area>
+    <distance_to_city>500</distance_to_city>
+    <distance_to_sea>15000</distance_to_sea>
+    <distance_to_lake>2000</distance_to_lake>
+    <images>
+      <image>https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800</image>
+      <image>https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800</image>
+    </images>
+  </property>
+
+  <property>
+    <title>Traditional House with Garden</title>
+    <description>Charming traditional house with beautiful garden. Recently renovated while maintaining original character. Perfect family home with space for children to play.</description>
+    <country>Germany</country>
+    <city>Berlin</city>
+    <price>320000</price>
+    <property_type>house</property_type>
+    <bedrooms>3</bedrooms>
+    <bathrooms>2</bathrooms>
+    <area>140</area>
+    <plot_area>300</plot_area>
+    <distance_to_city>8000</distance_to_city>
+    <distance_to_sea>25000</distance_to_sea>
+    <distance_to_lake>3000</distance_to_lake>
+    <images>
+      <image>https://images.unsplash.com/photo-1449844908441-8829872d2607?w=800</image>
+    </images>
+  </property>
+</properties>

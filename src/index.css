@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google Translate Widget Styling */
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+.goog-te-gadget {
+  font-family: inherit !important;
+}
+
+/* Style the dropdown */
+#google_translate_element select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Hide Google branding */
+.goog-logo-link {
+  display: none !important;
+}
+
+.goog-te-gadget span {
+  color: transparent !important;
+}
+
+/* ViaEstate Design System - Professional Real Estate Platform */
+
+@layer base {
+  :root {
+    /* Core Colors */
+    --background: 0 0% 98%;
+    --foreground: 222 15% 15%;
+
+    /* Card System */
+    --card: 0 0% 100%;
+    --card-foreground: 222 15% 15%;
+
+    /* Interactive Elements */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 15% 15%;
+
+    /* Brand Colors - Golden Theme */
+    --primary: 38 72% 50%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Navy Blue for Trust */
+    --navy: 222 47% 11%;
+    --navy-foreground: 0 0% 100%;
+    
+    --secondary: 38 25% 95%;
+    --secondary-foreground: 38 72% 35%;
+
+    /* Neutral Palette */
+    --muted: 220 13% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 38 25% 95%;
+    --accent-foreground: 38 72% 35%;
+
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Form Elements */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 38 72% 50%;
+
+    /* Design System Extensions */
+    --radius: 0.75rem;
+    
+    /* Golden Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(38 72% 50%), hsl(45 86% 58%));
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(38 25% 98%));
+    --gradient-hero: linear-gradient(135deg, hsl(38 72% 50%) 0%, hsl(45 86% 58%) 50%, hsl(38 72% 50%) 100%);
+    
+    /* Premium Shadows */
+    --shadow-elegant: 0 10px 40px -10px hsl(38 72% 50% / 0.15);
+    --shadow-luxury: 0 25px 50px -12px hsl(38 72% 50% / 0.25);
+    --shadow-card: 0 2px 10px -2px hsl(220 13% 15% / 0.08);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark Mode - ViaEstate */
+    --background: 222 15% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 222 15% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 222 15% 10%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 38 72% 55%;
+    --primary-foreground: 222 15% 8%;
+
+    /* Navy Blue for Trust - Dark Mode */
+    --navy: 222 47% 15%;
+    --navy-foreground: 0 0% 95%;
+
+    --secondary: 222 15% 15%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 222 15% 15%;
+    --muted-foreground: 220 9% 65%;
+
+    --accent: 222 15% 15%;
+    --accent-foreground: 0 0% 95%;
+
+    --destructive: 0 75% 65%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 15% 20%;
+    --input: 222 15% 20%;
+    --ring: 38 72% 55%;
+
+    /* Dark Mode Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(38 72% 55%), hsl(45 86% 65%));
+    --gradient-subtle: linear-gradient(180deg, hsl(222 15% 10%), hsl(222 15% 8%));
+    --gradient-hero: linear-gradient(135deg, hsl(38 72% 55%) 0%, hsl(45 86% 65%) 50%, hsl(38 72% 55%) 100%);
+
+    --shadow-elegant: 0 10px 40px -10px hsl(38 72% 55% / 0.25);
+    --shadow-luxury: 0 25px 50px -12px hsl(38 72% 55% / 0.35);
+    --shadow-card: 0 2px 10px -2px hsl(0 0% 0% / 0.25);
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .shadow-luxury {
+    box-shadow: var(--shadow-luxury);
+  }
+  
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+}

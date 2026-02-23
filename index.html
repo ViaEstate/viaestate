@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ViaEstate - Properties in southern europe</title>
+    <meta name="description" content="Discover premium properties in Southern Europe with ViaEstate. Find your dream villa, apartment, or holiday home across Spain, Italy, Portugal, Greece and more." />
+    <meta name="author" content="ViaEstate" />
+    <meta name="keywords" content="properties in southern europe, real estate southern europe, villas southern europe, holiday homes, investment properties, spain, italy, portugal, greece" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="ViaEstate - Properties in Southern Europe" />
+    <meta property="og:description" content="Discover premium properties in Southern Europe with ViaEstate's AI-powered platform." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/placeholder.svg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@viaestate" />
+    <meta name="twitter:title" content="ViaEstate - Properties in Southern Europe" />
+    <meta name="twitter:description" content="Discover premium properties in Southern Europe with AI-powered matching" />
+    <meta name="twitter:image" content="/placeholder.svg" />
+
+    <!-- Hreflang for SEO - Multilingual Support -->
+    <link rel="alternate" hreflang="en" href="https://viaestate.eu/en" />
+    <link rel="alternate" hreflang="sv" href="https://viaestate.eu/sv" />
+    <link rel="alternate" hreflang="da" href="https://viaestate.eu/da" />
+    <link rel="alternate" hreflang="de" href="https://viaestate.eu/de" />
+    <link rel="alternate" hreflang="it" href="https://viaestate.eu/it" />
+    <link rel="alternate" hreflang="es" href="https://viaestate.eu/es" />
+    <link rel="alternate" hreflang="hr" href="https://viaestate.eu/hr" />
+    <link rel="alternate" hreflang="fr" href="https://viaestate.eu/fr" />
+    <!-- x-default for English -->
+    <link rel="alternate" hreflang="x-default" href="https://viaestate.eu/en" />
+
+    <!-- Canonical URL (will be updated by JS based on current language) -->
+    <link rel="canonical" href="https://viaestate.eu/en" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Update canonical URL based on current language
+      (function() {
+        const lang = window.location.pathname.split('/')[1] || 'en';
+        const canonical = document.querySelector('link[rel="canonical"]');
+        if (canonical) {
+          canonical.setAttribute('href', 'https://viaestate.eu/' + lang);
+        }
+      })();
+    </script>
+  </body>
+</html>

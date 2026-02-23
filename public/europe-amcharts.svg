@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" href="https://www.amcharts.com/wp-content/themes/amcharts4/css/img/favicon/favicon.ico" />
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://www.amcharts.com/wp-content/themes/amcharts4/css/img/favicon/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://www.amcharts.com/wp-content/themes/amcharts4/css/img/favicon/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://www.amcharts.com/wp-content/themes/amcharts4/css/img/favicon/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://www.amcharts.com/wp-content/themes/amcharts4/css/img/favicon/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://www.amcharts.com/wp-content/themes/amcharts4/css/img/favicon/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://www.amcharts.com/wp-content/themes/amcharts4/css/img/favicon/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://www.amcharts.com/wp-content/themes/amcharts4/css/img/favicon/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://www.amcharts.com/wp-content/themes/amcharts4/css/img/favicon/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="https://www.amcharts.com/wp-content/themes/amcharts4/css/img/favicon/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="https://www.amcharts.com/wp-content/themes/amcharts4/css/img/favicon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="https://www.amcharts.com/wp-content/themes/amcharts4/css/img/favicon/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://www.amcharts.com/wp-content/themes/amcharts4/css/img/favicon/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="https://www.amcharts.com/wp-content/themes/amcharts4/css/img/favicon/favicon-128.png" sizes="128x128" />
+<meta name="msapplication-TileImage" content="https://www.amcharts.com/wp-content/themes/amcharts4/css/img/favicon/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="https://www.amcharts.com/wp-content/themes/amcharts4/css/img/favicon/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="https://www.amcharts.com/wp-content/themes/amcharts4/css/img/favicon/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="https://www.amcharts.com/wp-content/themes/amcharts4/css/img/favicon/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="https://www.amcharts.com/wp-content/themes/amcharts4/css/img/favicon/mstile-310x310.png" />
+<meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+<script>
+	if ( screen.width >= 768 && screen.width <= 1136 ) {
+		var ratio = Math.round( screen.width / 13 ) / 100;
+		document.getElementById( "viewport" ).setAttribute( "content", "width=1300, initial-scale=" + ratio );
+	}
+</script>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://www.amcharts.com/xmlrpc.php">
+
+<meta name='robots' content='noindex, follow' />
+
+	<!-- This site is optimized with the Yoast SEO plugin v27.0 - https://yoast.com/product/yoast-seo-wordpress/ -->
+	<title>Page not found - amCharts</title>
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:title" content="Page not found - amCharts" />
+	<meta property="og:site_name" content="amCharts" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.amcharts.com/#website","url":"https://www.amcharts.com/","name":"amCharts","description":"","publisher":{"@id":"https://www.amcharts.com/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.amcharts.com/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https://www.amcharts.com/#organization","name":"amCharts","url":"https://www.amcharts.com/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.amcharts.com/#/schema/logo/image/","url":"https://www.amcharts.com/wp-content/uploads/2017/10/amcharts_light_opaque.png","contentUrl":"https://www.amcharts.com/wp-content/uploads/2017/10/amcharts_light_opaque.png","width":1000,"height":558,"caption":"amCharts"},"image":{"@id":"https://www.amcharts.com/#/schema/logo/image/"},"sameAs":["https://www.facebook.com/amcharts/","https://x.com/amcharts"]}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//cpwebassets.codepen.io' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<style id='wp-img-auto-sizes-contain-inline-css' type='text/css'>
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+<style id='global-styles-inline-css' type='text/css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link rel='stylesheet' id='mailerlite_forms.css-css' href='https://www.amcharts.com/wp-content/plugins/official-mailerlite-sign-up-forms/assets/css/mailerlite_forms.css?ver=1.7.20' type='text/css' media='all' />
+<link rel='stylesheet' id='amcharts2-style-css' href='https://www.amcharts.com/wp-content/themes/amcharts4/css/main.min.css?ver=20250930-051' type='text/css' media='all' />
+<script type="text/javascript" src="https://www.amcharts.com/wp-includes/js/jquery/jquery.min.js" id="jquery-js"></script>
+<script type="text/javascript" src="https://www.amcharts.com/wp-content/themes/amcharts4/js/consent.min.js?ver=20250930-051" id="amcharts2-consent-js" async="async" data-wp-strategy="async"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.amcharts.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.9.1" />
+<meta name="generator" content="Site Kit by Google 1.172.0" />        <!-- MailerLite Universal -->
+        <script>
+            (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+                .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+                n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+            (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+            ml('account', '672658');
+            ml('enablePopups', false);
+        </script>
+        <!-- End MailerLite Universal -->
+          <!--[if lt IE 9]>
+  <script type='text/javascript' src='https://www.amcharts.com/wp-content/themes/amcharts4/js/html5shiv.min.js?ver=20250930-051'></script>
+  <script type='text/javascript' src='https://www.amcharts.com/wp-content/themes/amcharts4/js/respond.min.js?ver=20250930-051'></script>
+  <![endif]-->
+  
+    
+  <!-- Policy-related stuff -->
+  <script>
+  // Indicates current version of the Privacy policy
+  var amcharts2_policy_version = 2018052201;
+  </script>
+  <style id='wp-block-heading-inline-css' type='text/css'>
+h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-background,h3:where(.wp-block-heading).has-background,h4:where(.wp-block-heading).has-background,h5:where(.wp-block-heading).has-background,h6:where(.wp-block-heading).has-background{padding:1.25em 2.375em}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg}
+/*# sourceURL=https://www.amcharts.com/wp-includes/blocks/heading/style.min.css */
+</style>
+<style id='wp-block-image-inline-css' type='text/css'>
+.wp-block-image>a,.wp-block-image>figure>a{display:inline-block}.wp-block-image img{box-sizing:border-box;height:auto;max-width:100%;vertical-align:bottom}@media not (prefers-reduced-motion){.wp-block-image img.hide{visibility:hidden}.wp-block-image img.show{animation:show-content-image .4s}}.wp-block-image[style*=border-radius] img,.wp-block-image[style*=border-radius]>a{border-radius:inherit}.wp-block-image.has-custom-border img{box-sizing:border-box}.wp-block-image.aligncenter{text-align:center}.wp-block-image.alignfull>a,.wp-block-image.alignwide>a{width:100%}.wp-block-image.alignfull img,.wp-block-image.alignwide img{height:auto;width:100%}.wp-block-image .aligncenter,.wp-block-image .alignleft,.wp-block-image .alignright,.wp-block-image.aligncenter,.wp-block-image.alignleft,.wp-block-image.alignright{display:table}.wp-block-image .aligncenter>figcaption,.wp-block-image .alignleft>figcaption,.wp-block-image .alignright>figcaption,.wp-block-image.aligncenter>figcaption,.wp-block-image.alignleft>figcaption,.wp-block-image.alignright>figcaption{caption-side:bottom;display:table-caption}.wp-block-image .alignleft{float:left;margin:.5em 1em .5em 0}.wp-block-image .alignright{float:right;margin:.5em 0 .5em 1em}.wp-block-image .aligncenter{margin-left:auto;margin-right:auto}.wp-block-image :where(figcaption){margin-bottom:1em;margin-top:.5em}.wp-block-image.is-style-circle-mask img{border-radius:9999px}@supports ((-webkit-mask-image:none) or (mask-image:none)) or (-webkit-mask-image:none){.wp-block-image.is-style-circle-mask img{border-radius:0;-webkit-mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-mode:alpha;-webkit-mask-position:center;mask-position:center;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:contain;mask-size:contain}}:root :where(.wp-block-image.is-style-rounded img,.wp-block-image .is-style-rounded img){border-radius:9999px}.wp-block-image figure{margin:0}.wp-lightbox-container{display:flex;flex-direction:column;position:relative}.wp-lightbox-container img{cursor:zoom-in}.wp-lightbox-container img:hover+button{opacity:1}.wp-lightbox-container button{align-items:center;backdrop-filter:blur(16px) saturate(180%);background-color:#5a5a5a40;border:none;border-radius:4px;cursor:zoom-in;display:flex;height:20px;justify-content:center;opacity:0;padding:0;position:absolute;right:16px;text-align:center;top:16px;width:20px;z-index:100}@media not (prefers-reduced-motion){.wp-lightbox-container button{transition:opacity .2s ease}}.wp-lightbox-container button:focus-visible{outline:3px auto #5a5a5a40;outline:3px auto -webkit-focus-ring-color;outline-offset:3px}.wp-lightbox-container button:hover{cursor:pointer;opacity:1}.wp-lightbox-container button:focus{opacity:1}.wp-lightbox-container button:focus,.wp-lightbox-container button:hover,.wp-lightbox-container button:not(:hover):not(:active):not(.has-background){background-color:#5a5a5a40;border:none}.wp-lightbox-overlay{box-sizing:border-box;cursor:zoom-out;height:100vh;left:0;overflow:hidden;position:fixed;top:0;visibility:hidden;width:100%;z-index:100000}.wp-lightbox-overlay .close-button{align-items:center;cursor:pointer;display:flex;justify-content:center;min-height:40px;min-width:40px;padding:0;position:absolute;right:calc(env(safe-area-inset-right) + 16px);top:calc(env(safe-area-inset-top) + 16px);z-index:5000000}.wp-lightbox-overlay .close-button:focus,.wp-lightbox-overlay .close-button:hover,.wp-lightbox-overlay .close-button:not(:hover):not(:active):not(.has-background){background:none;border:none}.wp-lightbox-overlay .lightbox-image-container{height:var(--wp--lightbox-container-height);left:50%;overflow:hidden;position:absolute;top:50%;transform:translate(-50%,-50%);transform-origin:top left;width:var(--wp--lightbox-container-width);z-index:9999999999}.wp-lightbox-overlay .wp-block-image{align-items:center;box-sizing:border-box;display:flex;height:100%;justify-content:center;margin:0;position:relative;transform-origin:0 0;width:100%;z-index:3000000}.wp-lightbox-overlay .wp-block-image img{height:var(--wp--lightbox-image-height);min-height:var(--wp--lightbox-image-height);min-width:var(--wp--lightbox-image-width);width:var(--wp--lightbox-image-width)}.wp-lightbox-overlay .wp-block-image figcaption{display:none}.wp-lightbox-overlay button{background:none;border:none}.wp-lightbox-overlay .scrim{background-color:#fff;height:100%;opacity:.9;position:absolute;width:100%;z-index:2000000}.wp-lightbox-overlay.active{visibility:visible}@media not (prefers-reduced-motion){.wp-lightbox-overlay.active{animation:turn-on-visibility .25s both}.wp-lightbox-overlay.active img{animation:turn-on-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active){animation:turn-off-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active) img{animation:turn-off-visibility .25s both}.wp-lightbox-overlay.zoom.active{animation:none;opacity:1;visibility:visible}.wp-lightbox-overlay.zoom.active .lightbox-image-container{animation:lightbox-zoom-in .4s}.wp-lightbox-overlay.zoom.active .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.active .scrim{animation:turn-on-visibility .4s forwards}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active){animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container{animation:lightbox-zoom-out .4s}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .scrim{animation:turn-off-visibility .4s forwards}}@keyframes show-content-image{0%{visibility:hidden}99%{visibility:hidden}to{visibility:visible}}@keyframes turn-on-visibility{0%{opacity:0}to{opacity:1}}@keyframes turn-off-visibility{0%{opacity:1;visibility:visible}99%{opacity:0;visibility:visible}to{opacity:0;visibility:hidden}}@keyframes lightbox-zoom-in{0%{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale))}to{transform:translate(-50%,-50%) scale(1)}}@keyframes lightbox-zoom-out{0%{transform:translate(-50%,-50%) scale(1);visibility:visible}99%{visibility:visible}to{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale));visibility:hidden}}
+/*# sourceURL=https://www.amcharts.com/wp-includes/blocks/image/style.min.css */
+</style>
+<style id='wp-block-paragraph-inline-css' type='text/css'>
+.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}
+/*# sourceURL=https://www.amcharts.com/wp-includes/blocks/paragraph/style.min.css */
+</style>
+
+</head>
+
+
+<body class="error404 wp-theme-amcharts4">
+<div id="page" class="site ">
+
+		<header id="masthead" class="site-header" role="banner">
+		
+			
+		<div class="content-col">
+			
+			<div class="row">
+				<div class="col-md-2">
+					<a class="menu-toggle" role="button" data-controls="site-navigation" aria-controls="primary-menu" aria-expanded="false">Primary Menu</a>
+					<a href="https://www.amcharts.com/" id="logo" rel="home">amCharts</a>
+				</div>
+				<div class="col-md-8 center">
+					<div id="site-navigation" class="menu-main-menu-container trans-all"><ul id="primary-menu" class="menu"><li id="menu-item-10315" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-10315"><a href="https://www.amcharts.com/javascript-charts/">Products</a>
+<ul class="sub-menu">
+	<li id="menu-item-14294" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14294"><a href="https://www.amcharts.com/javascript-charts/">Charts</a></li>
+	<li id="menu-item-14295" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14295"><a href="https://www.amcharts.com/javascript-maps/">Maps</a></li>
+	<li id="menu-item-17184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17184"><a href="https://www.amcharts.com/stock-chart/">Stock Chart</a></li>
+	<li id="menu-item-18544" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18544"><a href="https://www.amcharts.com/gantt/">Gantt</a></li>
+</ul>
+</li>
+<li id="menu-item-137" class="demo menu-item menu-item-type-demo menu-item-object-cpt_archive menu-item-137"><a href="https://www.amcharts.com/demos/">Demos</a></li>
+<li id="menu-item-16606" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16606"><a href="https://www.amcharts.com/download/">Download</a></li>
+<li id="menu-item-22" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22"><a href="https://www.amcharts.com/online-store/">Buy</a></li>
+<li id="menu-item-27" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-27"><a href="https://www.amcharts.com/support/">Support &#038; Licenses</a></li>
+<li id="menu-item-16607" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16607"><a href="https://www.amcharts.com/docs/v5/">Docs</a></li>
+<li id="menu-item-7136" class="social md-only menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-7136"><a href="#">Find us on</a>
+<ul class="sub-menu">
+	<li id="menu-item-7137" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7137"><a href="https://www.facebook.com/amcharts"><i class="icon icon-facebook" title="Facebook"></i></a></li>
+	<li id="menu-item-7138" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7138"><a href="https://www.twitter.com/amcharts"><i class="icon icon-twitter" title="Twitter"></i></a></li>
+	<li id="menu-item-7140" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7140"><a href="https://www.linkedin.com/company/amcharts"><i class="icon icon-linkedin" title="LinkedIn"></i></a></li>
+</ul>
+</li>
+</ul></div>				</div>
+				<div class="col-md-2 right">
+					<form role="search" method="get" class="search-form" action="https://www.amcharts.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			</form>				</div>
+			</div>
+		</div>
+
+	</header><!-- #masthead -->
+	
+	<div id="content" class="site-content">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+			
+			<header class="page-header hero">
+				<div class="content-col">
+					<h1 class="page-title">404 Page Not Found</h1>
+				</div>
+			</header>
+
+			<div class="page-content content-col">
+				<h2>Oops! That was not supposed to happen :(</h2>
+				<p>It looks like nothing was found at this location. Maybe try the search below?</p>
+				<p><form role="search" method="get" class="search-form" action="https://www.amcharts.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			</form></p>
+
+				<p data-height="442" data-theme-id="24419" data-slug-hash="b68acbd77c8227f31f8de600780895df" data-default-tab="result" data-user="amcharts" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/team/amcharts/pen/b68acbd77c8227f31f8de600780895df/">404</a> by amCharts (<a href="https://codepen.io/amcharts">@amcharts</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+				<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+			</div><!-- .page-content -->
+
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+  </div><!-- #content -->
+
+
+  <footer class="site-footer">
+    <div class="content-col">
+      
+      <div class="row">
+        <div class="col-md-4 col-sm-12">
+          <div>
+            <a href="https://www.amcharts.com/" id="logo2" rel="home">amCharts</a>
+          </div><!-- .site-branding -->
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-12">
+          <div role="navigation"><h4>More info</h4><div class="menu-info-container"><ul id="menu-info" class="menu"><li id="menu-item-6844" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6844"><a href="https://www.amcharts.com/accessibility/">Accessibility Features</a></li>
+<li id="menu-item-81" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-81"><a href="https://www.amcharts.com/about/">About amCharts</a></li>
+<li id="menu-item-18326" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18326"><a href="https://www.amcharts.com/partners/">Partners</a></li>
+<li id="menu-item-9430" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9430"><a href="https://www.amcharts.com/about/press-kit/">Press Kit</a></li>
+<li id="menu-item-13326" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13326"><a href="https://www.amcharts.com/support/support-info/get-support/">Getting support</a></li>
+<li id="menu-item-17658" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17658"><a href="https://www.amcharts.com/subscribe/">Subscribe to amNews</a></li>
+<li id="menu-item-17641" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17641"><a href="/blog/">Blog</a></li>
+</ul></div></div>        </div>
+        <div class="col-md-2 col-sm-4 col-xs-12">
+          <div role="navigation"><h4>Products</h4><div class="menu-products-container"><ul id="menu-products" class="menu"><li id="menu-item-12188" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12188"><a href="https://www.amcharts.com/javascript-charts/">amCharts 5: Charts</a></li>
+<li id="menu-item-14767" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14767"><a href="https://www.amcharts.com/javascript-maps/">amCharts 5: Maps</a></li>
+<li id="menu-item-17183" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17183"><a href="https://www.amcharts.com/stock-chart/">amCharts 5: Stock Chart</a></li>
+<li id="menu-item-18543" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18543"><a href="https://www.amcharts.com/gantt/">amCharts 5: Gantt</a></li>
+<li id="menu-item-8769" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8769"><a href="https://wordpress.org/plugins/amcharts-charts-and-maps/">WordPress Plugin <i class="icon icon-outside"></i></a></li>
+<li id="menu-item-12189" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12189"><a href="https://www.amcharts.com/versions/">Version information</a></li>
+<li id="menu-item-18174" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18174"><a href="https://www.amcharts.com/3rd-party/">3rd party software</a></li>
+</ul></div></div>        </div>
+        <div class="col-md-2 col-sm-4 col-xs-12">
+          <div role="navigation"><h4>Tools &#038; Resources</h4><div class="menu-tools-resources-container"><ul id="menu-tools-resources" class="menu"><li id="menu-item-18004" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18004"><a href="https://amcharts.com/editor/map/">Online Map Editor</a></li>
+<li id="menu-item-17414" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17414"><a href="https://visitedplaces.com/">Visited Countries Map</a></li>
+<li id="menu-item-6846" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6846"><a href="https://visitedplaces.com/states/">Visited States Map</a></li>
+<li id="menu-item-18474" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18474"><a href="https://ai.amcharts.com/">AI Chart Maker</a></li>
+<li id="menu-item-8768" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8768"><a href="https://www.amcharts.com/svg-maps/">Free SVG Maps</a></li>
+<li id="menu-item-18005" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18005"><a href="https://www.amcharts.com/online-tools/">More Online Tools</a></li>
+<li id="menu-item-18623" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18623"><a href="https://shmetrix.com/">Shmetrix: DataViz Fun</a></li>
+</ul></div></div><div role="navigation">
+<h4 class="wp-block-heading">Sci-Fi from amCharts</h4>
+</div><div role="navigation">
+<figure class="wp-block-image size-large"><a href="https://www.amazon.com/Master-Version-1-1-near-future-thriller-ebook/dp/B0DQQCZKZ2/"><img loading="lazy" decoding="async" width="640" height="1024" src="https://www.amcharts.com/wp-content/uploads/2025/01/cover-kindle-en-640x1024.jpg" alt="" class="wp-image-18363" srcset="https://www.amcharts.com/wp-content/uploads/2025/01/cover-kindle-en-640x1024.jpg 640w, https://www.amcharts.com/wp-content/uploads/2025/01/cover-kindle-en-250x400.jpg 250w, https://www.amcharts.com/wp-content/uploads/2025/01/cover-kindle-en-960x1536.jpg 960w, https://www.amcharts.com/wp-content/uploads/2025/01/cover-kindle-en-1280x2048.jpg 1280w, https://www.amcharts.com/wp-content/uploads/2025/01/cover-kindle-en.jpg 1375w" sizes="auto, (max-width: 640px) 100vw, 640px" /></a></figure>
+</div>        </div>
+        <div class="col-md-2 col-sm-4 col-xs-12">
+          <div role="navigation"><h4>Contact Us</h4><div class="menu-contact-container"><ul id="menu-contact" class="menu"><li id="menu-item-85" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-85"><a href="mailto:contact@amcharts.com">contact@amcharts.com</a></li>
+<li id="menu-item-86" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-86"><a href="https://www.amcharts.com/support/">Support Center</a></li>
+<li id="menu-item-17337" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17337"><a href="https://www.amcharts.com/report-vulnerability/">Reporting a vulnerability</a></li>
+</ul></div></div><div role="navigation"><h4>Legal Stuff</h4><div class="menu-legal-stuff-container"><ul id="menu-legal-stuff" class="menu"><li id="menu-item-9940" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9940"><a href="https://www.amcharts.com/privacy-policy/">Privacy Policy</a></li>
+<li id="menu-item-9939" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9939"><a href="https://www.amcharts.com/terms-conditions/">Terms &#038; Conditions</a></li>
+</ul></div></div><div role="navigation">
+<h4 class="wp-block-heading">Address</h4>
+</div><div role="navigation">
+<p>L. Rezos 14-4<br>Neringa 93101<br>Lithuania</p>
+</div><div role="navigation">
+<p class="small">VAT ID: LT100003826811<br>DUNS: 498387449</p>
+</div>        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8 col-md-push-4 col-sm-12 subfooter">
+          
+          <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12" role="navigation">
+              <div class="menu-social-container"><ul id="social-menu" class="menu"><li id="menu-item-132" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-132"><a href="https://www.facebook.com/amcharts"><i class="icon icon-facebook" title="Facebook"></i></a></li>
+<li id="menu-item-133" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-133"><a href="https://www.x.com/amcharts"><i class="icon icon-x" title="X (Twitter)"></i></a></li>
+<li id="menu-item-18476" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18476"><a href="https://bsky.app/profile/amcharts.com"><i class="icon icon-bluesky" title="Bluesky"></i></a></li>
+</ul></div>            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12 pull-right" id="copyright" role="contentinfo">
+              Copyright © 2006-2026, amCharts. All rights reserved.            </div>
+          </div>
+
+        </div>
+        
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <div id="notices" class="trans-all">
+    <div class="sticky-notice content-col row trans-all" id="notice_policy">
+      <div class="col-md-9">
+        We use cookies on our website to support technical features that enhance your user experience. We also collect anonymous analytical data, as described in our <a href="https://www.amcharts.com/privacy-policy/">Privacy policy</a>.
+      </div>
+      <div class="col-md-3">
+        <input type="button" value="I agree" class="button" />
+      </div>
+    </div>
+
+    <!-- <div class="sticky-notice only-bottom content-col row trans-all" id="subscribe_news">
+      <div class="col-md-9">
+        <p>Would you like to stay in touch with us? Click the button below to <b>subscribe to amCharts News</b> - a newsletter sent only when we have something really cool!</p>
+      </div>
+      <div class="col-md-3">
+        <input type="button" value="Subscribe" class="button lite agree" />
+        <input type="button" value="Not interested" class="button lite not_interested" />
+      </div>
+    </div> -->
+
+    <!-- <div class="sticky-notice only-bottom content-col row trans-all" id="subscribe_dataviz">
+      <div class="col-md-9">
+        <p>Fancy a monthly DataViz-related tip? Use the button below to <b>subscribe to DataViz Tips</b> newsletter.</p>
+      </div>
+      <div class="col-md-3">
+        <input type="button" value="Subscribe" class="button lite agree" />
+        <input type="button" value="Not interested" class="button lite not_interested" />
+      </div>
+    </div> -->
+  </div>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/amcharts4/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script type="text/javascript" src="https://cpwebassets.codepen.io/assets/embed/ei.js?ver=1.0.1" id="codepen-embed-script-js"></script>
+<script type="text/javascript" src="https://www.amcharts.com/wp-content/themes/amcharts4/js/main.min.js?ver=20250930-051" id="amcharts2-js-js"></script>
+  <!-- <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script> -->
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N414QWTXT4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'ad_storage': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-N414QWTXT4');
+  amcharts2.ready(function() {
+  amutils.registerConsent(function() {
+    function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'update', {
+        ad_user_data: 'granted',
+        ad_personalization: 'granted',
+        ad_storage: 'granted',
+        analytics_storage: 'granted'
+      });
+    });
+  });
+</script>
+
+
+</body>
+</html>
