@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ViaEstate - Properties in Southern Europe</title>
+    <script type="text/javascript">
+      // ViaEstate Language-Aware 404 Redirect
+      // This script redirects language-specific 404s to the correct SPA route
+      
+      (function() {
+        var path = location.pathname;
+        var segments = path.split('/').filter(Boolean);
+        var supported = ['en', 'sv', 'da', 'de', 'it', 'es', 'hr', 'fr'];
+        
+        // Check if first segment is a supported language
+        if (segments.length > 0 && supported.indexOf(segments[0]) !== -1) {
+          // Language prefix exists, redirect to SPA with language
+          var lang = segments[0];
+          var rest = segments.slice(1).join('/');
+          var search = location.search;
+          var hash = location.hash;
+          
+          var target = '/' + lang;
+          if (rest) target += '/' + rest;
+          if (search) target += search;
+          if (hash) target += hash;
+          
+          location.replace(target);
+        } else {
+          // No language prefix, redirect to English
+          var search = location.search;
+          var hash = location.hash;
+          location.replace('/en' + (search || '') + (hash || ''));
+        }
+      })();
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
