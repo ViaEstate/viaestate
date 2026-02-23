@@ -16,17 +16,20 @@ jobs:
         with:
           node-version: 18
 
+      - name: Setup Bun
+        uses: oven-sh/bun-setup@v1
+
       - name: Install dependencies
-        run: npm ci
+        run: bun install --frozen-lockfile
 
       - name: Build
-        run: npm run build
+        run: bun run build
 
       - name: Verify _redirects exists in dist
         run: ls -la dist/_redirects
 
-      - name: Create .nojekyll file to bypass Jekyll processing
-        run: touch dist/.nojekyll
+      - name: Copy index.html to 404.html for SPA routing
+        run: cp dist/index.html dist/404.html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
