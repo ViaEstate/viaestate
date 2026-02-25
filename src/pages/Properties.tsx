@@ -88,6 +88,21 @@ const Properties = () => {
     sessionStorage.setItem('selectedCountry', selectedCountry || '');
   }, [filters, selectedCountry])
 
+  // Restore scroll position when returning from property detail
+  useEffect(() => {
+    const returningFromDetail = sessionStorage.getItem('returningFromDetail') === 'true';
+    if (returningFromDetail) {
+      const savedScrollPosition = sessionStorage.getItem('propertiesScrollPosition');
+      if (savedScrollPosition) {
+        // Small delay to ensure the page is fully rendered
+        setTimeout(() => {
+          window.scrollTo(0, parseInt(savedScrollPosition, 10));
+          sessionStorage.removeItem('propertiesScrollPosition');
+        }, 100);
+      }
+    }
+  }, []);
+
   const fetchProperties = async () => {
     try {
       const selectFields = `

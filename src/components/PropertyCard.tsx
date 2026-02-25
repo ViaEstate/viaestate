@@ -101,6 +101,8 @@ const PropertyCard = ({
     if (onClick) {
       onClick();
     } else {
+      // Save scroll position before navigating to property detail
+      sessionStorage.setItem('propertiesScrollPosition', window.scrollY.toString());
       // Navigate to the shareable property link with language prefix
       navigate(`/${lang}/properties/${property.id}`);
     }
