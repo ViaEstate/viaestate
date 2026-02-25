@@ -93,12 +93,15 @@ const Properties = () => {
     const returningFromDetail = sessionStorage.getItem('returningFromDetail') === 'true';
     if (returningFromDetail) {
       const savedScrollPosition = sessionStorage.getItem('propertiesScrollPosition');
+      console.log('Restoring scroll position:', savedScrollPosition);
       if (savedScrollPosition) {
         // Small delay to ensure the page is fully rendered
         setTimeout(() => {
           window.scrollTo(0, parseInt(savedScrollPosition, 10));
           sessionStorage.removeItem('propertiesScrollPosition');
-        }, 100);
+          sessionStorage.removeItem('returningFromDetail');
+          console.log('Scroll restored to:', savedScrollPosition);
+        }, 200);
       }
     }
   }, []);
