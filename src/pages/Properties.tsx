@@ -89,20 +89,18 @@ const Properties = () => {
   }, [filters, selectedCountry])
 
   // Restore scroll position when returning from property detail
+  // We check ONLY for savedScrollPosition - not returningFromDetail
+  // because returningFromDetail gets removed by another useEffect before this runs
   useEffect(() => {
-    const returningFromDetail = sessionStorage.getItem('returningFromDetail') === 'true';
-    if (returningFromDetail) {
-      const savedScrollPosition = sessionStorage.getItem('propertiesScrollPosition');
-      console.log('Restoring scroll position:', savedScrollPosition);
-      if (savedScrollPosition) {
-        // Small delay to ensure the page is fully rendered
-        setTimeout(() => {
-          window.scrollTo(0, parseInt(savedScrollPosition, 10));
-          sessionStorage.removeItem('propertiesScrollPosition');
-          sessionStorage.removeItem('returningFromDetail');
-          console.log('Scroll restored to:', savedScrollPosition);
-        }, 200);
-      }
+    const savedScrollPosition = sessionStorage.getItem('propertiesScrollPosition');
+    console.log('Checking for saved scroll position:', savedScrollPosition);
+    if (savedScrollPosition) {
+      // Small delay to ensure the page is fully rendered
+      setTimeout(() => {
+        window.scrollTo(0, parseInt(savedScrollPosition, 10));
+        sessionStorage.removeItem('propertiesScrollPosition');
+        console.log('Scroll restored to:', savedScrollPosition);
+      }, 300);
     }
   }, []);
 
