@@ -38,9 +38,10 @@ jobs:
 
       - name: Inject SPA fallback script into 404.html
         run: |
-          # Add sessionStorage script to 404.html for SPA path restoration
-          SCRIPT='
-          <script>
+          cat > /tmp/inject.js << 'EOFJS'
+          const fs = require('fs');
+          const html = fs.readFileSync('dist/404.html', 'utf8');
+          const script = `<script>
             (function() {
               var path = window.location.pathname;
               var supported = ["en", "sv", "da", "de", "it", "es", "hr", "fr", "fi", "nb", "is"];
@@ -49,10 +50,12 @@ jobs:
                 sessionStorage.setItem("spa_fallback_path", path);
               }
             })();
-          </script>
-          '
-          # Insert the script after the <head> tag in 404.html
-          sed -i "s|<head>|<head>${SCRIPT}|" dist/404.html
+          </script>`;
+          const modified = html.replace('<head>', '<head>' + script);
+          fs.writeFileSync('dist/404.html', modified);
+          console.log('Injected SPA fallback script into 404.html');
+          EOFJS
+          node /tmp/inject.js
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
