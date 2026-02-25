@@ -1,8 +1,9 @@
-import { BrowserRouter, Routes, Route, Navigate, useParams, Outlet } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate, useParams, Outlet, useNavigate } from "react-router-dom"
 import { AuthProvider } from "./contexts/AuthContext"
 import { LanguageProvider } from "./contexts/LanguageContext"
 import ProtectedRoute from "./components/ProtectedRoute"
 import ErrorBoundary from "./components/ErrorBoundary"
+import { useEffect } from "react"
 
 // Pages
 import Index from "./pages/Index"
@@ -51,9 +52,27 @@ function RootRedirect() {
   return <Navigate to="/en" replace />;
 }
 
+// Handle GitHub Pages 404 fallback - restore original path
+function SPARestore() {
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    // Check if we were redirected from a 404 (GitHub Pages)
+    const storedPath = sessionStorage.getItem('spa_fallback_path');
+    if (storedPath && storedPath !== window.location.pathname) {
+      sessionStorage.removeItem('spa_fallback_path');
+      navigate(storedPath, { replace: true });
+    }
+  }, [navigate]);
+  
+  return null;
+}
+
 const AppContent = () => {
   return (
-    <Routes>
+    <>
+      <SPARestore />
+      <Routes>
       {/* Root redirect */}
       <Route path="/" element={<RootRedirect />} />
 
@@ -160,6 +179,7 @@ const AppContent = () => {
       {/* 404 - MUST be last */}
       <Route path="*" element={<NotFound />} />
     </Routes>
+    </>
   );
 };
 
