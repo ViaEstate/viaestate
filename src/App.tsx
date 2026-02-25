@@ -6,9 +6,12 @@ import ErrorBoundary from "./components/ErrorBoundary"
 import { useEffect } from "react"
 
 // Prevent browser from auto-scrolling to top on navigation
+// Also force no cache for now
 if (typeof window !== 'undefined') {
   window.history.scrollRestoration = 'manual';
 }
+
+// Force reload on every visit (temporary for debugging)
 
 // Pages
 import Index from "./pages/Index"
