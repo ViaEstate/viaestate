@@ -5,6 +5,11 @@ import ProtectedRoute from "./components/ProtectedRoute"
 import ErrorBoundary from "./components/ErrorBoundary"
 import { useEffect } from "react"
 
+// Prevent browser from auto-scrolling to top on navigation
+if (typeof window !== 'undefined') {
+  window.history.scrollRestoration = 'manual';
+}
+
 // Pages
 import Index from "./pages/Index"
 import Login from "./pages/Login"
