@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
@@ -91,16 +91,75 @@ const Properties = () => {
   // Restore scroll position when returning from property detail
   // We check ONLY for savedScrollPosition - not returningFromDetail
   // because returningFromDetail gets removed by another useEffect before this runs
+  const scrollRestored = useRef(false);
   useEffect(() => {
-    const savedScrollPosition = sessionStorage.getItem('propertiesScrollPosition');
-    console.log('Checking for saved scroll position:', savedScrollPosition);
-    if (savedScrollPosition) {
-      // Small delay to ensure the page is fully rendered
-      setTimeout(() => {
-        window.scrollTo(0, parseInt(savedScrollPosition, 10));
-        sessionStorage.removeItem('propertiesScrollPosition');
-        console.log('Scroll restored to:', savedScrollPosition);
-      }, 300);
+    // Prevent multiple restorations
+    if (scrollRestored.current) return;
+    
+    const savedScrollData = sessionStorage.getItem('propertiesScrollPosition');
+    console.log('Checking for saved scroll position:', savedScrollData);
+    
+    if (savedScrollData) {
+      try {
+        // Try to parse as JSON (new format with timestamp)
+        const scrollData = JSON.parse(savedScrollData);
+        const scrollPos = scrollData.position;
+        const timestamp = scrollData.timestamp;
+        
+        // Check if the data is recent (within last 5 minutes)
+        const isRecent = Date.now() - timestamp < 5 * 60 * 1000;
+        
+        if (isRecent && scrollPos > 0) {
+          const restoreScroll = () => {
+            window.scrollTo(0, scrollPos);
+            // Also try document.documentElement for better browser support
+            if (window.scrollY !== scrollPos) {
+              document.documentElement.scrollTop = scrollPos;
+            }
+            scrollRestored.current = true;
+            sessionStorage.removeItem('propertiesScrollPosition');
+            console.log('Scroll restored to:', scrollPos);
+          };
+
+          // Try to restore immediately first
+          restoreScroll();
+          
+          // If that didn't work (page not ready), try again with delays
+          if (!scrollRestored.current || window.scrollY !== scrollPos) {
+            setTimeout(restoreScroll, 100);
+          }
+          if (!scrollRestored.current || window.scrollY !== scrollPos) {
+            setTimeout(restoreScroll, 300);
+          }
+          if (!scrollRestored.current || window.scrollY !== scrollPos) {
+            setTimeout(restoreScroll, 500);
+          }
+        } else {
+          // Old or invalid data, remove it
+          sessionStorage.removeItem('propertiesScrollPosition');
+        }
+      } catch (e) {
+        // Fallback for old string format (backwards compatibility)
+        const scrollPos = parseInt(savedScrollData, 10);
+        if (!isNaN(scrollPos) && scrollPos > 0) {
+          const restoreScroll = () => {
+            window.scrollTo(0, scrollPos);
+            if (window.scrollY !== scrollPos) {
+              document.documentElement.scrollTop = scrollPos;
+            }
+            scrollRestored.current = true;
+            sessionStorage.removeItem('propertiesScrollPosition');
+            console.log('Scroll restored to:', scrollPos);
+          };
+
+          restoreScroll();
+          if (!scrollRestored.current) setTimeout(restoreScroll, 100);
+          if (!scrollRestored.current) setTimeout(restoreScroll, 300);
+          if (!scrollRestored.current) setTimeout(restoreScroll, 500);
+        } else {
+          sessionStorage.removeItem('propertiesScrollPosition');
+        }
+      }
     }
   }, []);
 

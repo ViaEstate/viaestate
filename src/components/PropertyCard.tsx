@@ -102,9 +102,17 @@ const PropertyCard = ({
       onClick();
     } else {
       // Save scroll position before navigating to property detail
-      const scrollPos = window.scrollY;
-      sessionStorage.setItem('propertiesScrollPosition', scrollPos.toString());
+      // Use both window.scrollY and document.documentElement.scrollTop for better browser support
+      const scrollPos = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
+      
+      // Save with timestamp to handle multiple tabs/windows
+      const scrollData = JSON.stringify({
+        position: scrollPos,
+        timestamp: Date.now()
+      });
+      sessionStorage.setItem('propertiesScrollPosition', scrollData);
       console.log('Saved scroll position:', scrollPos);
+      
       // Navigate to the shareable property link with language prefix
       navigate(`/${lang}/properties/${property.id}`);
     }
