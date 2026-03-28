@@ -5,11 +5,12 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { ChevronLeft, ChevronRight, MapPin, Euro, MessageCircle, Send, User, Calendar, LogIn, Home, Waves, Mountain, Ruler, Bath, ArrowLeft, ClipboardCheck } from "lucide-react";
+import { ChevronLeft, ChevronRight, MapPin, Euro, MessageCircle, Send, User, Calendar, LogIn, Home, Waves, Mountain, Ruler, Bath, ArrowLeft, ClipboardCheck, MessageSquare } from "lucide-react";
 import { supabase } from '@/lib/supabaseClient';
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 import InquiryModal from "@/components/InquiryModal";
+import ChatModal from "@/components/ChatModal";
 import { Tables } from '@/integrations/supabase/types';
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getTranslatedTitle, getTranslatedDescription } from "@/utils/translation";
@@ -38,6 +39,7 @@ const PropertyDetail = () => {
   const [posting, setPosting] = useState(false);
   const [inquiryModalOpen, setInquiryModalOpen] = useState(false);
   const [currentInquiryType, setCurrentInquiryType] = useState<'general' | 'inspection'>('general');
+  const [chatModalOpen, setChatModalOpen] = useState(false);
 
   const { user, profile } = useAuth();
   const { toast } = useToast();
@@ -490,6 +492,15 @@ const PropertyDetail = () => {
                 Book an independent inspector
               </Button>
             </div>
+
+            {/* Chat Button */}
+            <Button
+              className="w-full py-3 text-lg mt-4"
+              onClick={() => setChatModalOpen(true)}
+            >
+              <MessageSquare className="h-5 w-5 mr-2" />
+              Chat with Broker
+            </Button>
           </div>
         </div>
 
@@ -500,6 +511,17 @@ const PropertyDetail = () => {
           onClose={() => setInquiryModalOpen(false)}
           property={property}
           inquiryType={currentInquiryType}
+        />
+
+        {/* Chat Modal */}
+        <ChatModal
+          isOpen={chatModalOpen}
+          onClose={() => setChatModalOpen(false)}
+          propertyId={property.id}
+          propertyTitle={property.title}
+          propertyRef={property.ref}
+          brokerId={property.owner_id}
+          brokerName={property.seller_type || 'Broker'}
         />
       </div>
     </div>

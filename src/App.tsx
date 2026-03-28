@@ -28,6 +28,7 @@ import AdminPanel from "./pages/AdminPanel"
 import AdminArticles from "./pages/AdminArticles"
 import ArticleEditor from "./pages/ArticleEditor"
 import Articles from "./pages/Articles"
+import ChatPage from "./pages/ChatPage"
 import ArticleView from "./pages/ArticleView"
 import Forum from "./pages/Forum"
 import Guidance from "./pages/Guidance"
@@ -97,6 +98,7 @@ const AppContent = () => {
         <Route path="about" element={<AboutUs />} />
         <Route path="forum" element={<Forum />} />
         <Route path="guidance" element={<Guidance />} />
+        <Route path="chat/:token" element={<ChatPage />} />
         <Route path="work-with-us" element={<WorkWithUs />} />
         <Route path="packages" element={<Navigate to="/:lang/work-with-us" replace />} />
 

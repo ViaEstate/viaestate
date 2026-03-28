@@ -62,6 +62,9 @@ const AdminPanel = () => {
   const [leadFilter, setLeadFilter] = useState<string | null>(null)
   const [isDeletingLead, setIsDeletingLead] = useState(false)
 
+  // Chat conversation states
+  const [allConversations, setAllConversations] = useState<any[]>([])
+
   // XML Import states
   const [xmlUrl, setXmlUrl] = useState('')
   const [xmlImportResults, setXmlImportResults] = useState<any>(null)
@@ -778,6 +781,7 @@ const AdminPanel = () => {
               <TabsTrigger value="translations">Translations</TabsTrigger>
               <TabsTrigger value="articles">Articles</TabsTrigger>
               <TabsTrigger value="leads">Ongoing Leads</TabsTrigger>
+              <TabsTrigger value="chats">Chats</TabsTrigger>
               <TabsTrigger value="analytics">Analytics</TabsTrigger>
               <TabsTrigger value="users">Users</TabsTrigger>
               <TabsTrigger value="forum">Forum</TabsTrigger>
@@ -1899,6 +1903,49 @@ const AdminPanel = () => {
                     </div>
                   ) : (
                     <p className="text-center text-muted-foreground py-8">No leads found.</p>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Chats Tab */}
+          <TabsContent value="chats" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Chat Conversations</CardTitle>
+                <CardDescription>
+                  View and manage chat conversations with leads
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {allConversations.length > 0 ? (
+                    <div className="grid gap-4">
+                      {allConversations.map((conv: any) => (
+                        <Card key={conv.id} className="p-4">
+                          <div className="flex justify-between items-start">
+                            <div>
+                              <h4 className="font-semibold">{conv.property_title}</h4>
+                              <p className="text-sm text-muted-foreground">
+                                Lead: {conv.lead_email}
+                              </p>
+                              <p className="text-sm text-muted-foreground">
+                                Broker: {conv.broker_name}
+                              </p>
+                            </div>
+                            <Button
+                              size="sm"
+                              onClick={() => navigate(`/${lang}/chat/${conv.lead_token}`)}
+                            >
+                              Open Chat
+                            </Button>
+                          </div>
+                        </Card>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-center text-muted-foreground py-8">No chat conversations yet.</p>
                   )}
                 </div>
               </CardContent>
