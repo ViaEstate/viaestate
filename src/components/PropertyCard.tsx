@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MapPin, Share2, Phone } from "lucide-react";
+import { MapPin, Share2, Phone, MessageSquare } from "lucide-react";
+import ChatModal from "./ChatModal";
 import { Tables } from "@/integrations/supabase/types";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -64,6 +65,7 @@ const PropertyCard = ({
 
   const [imageError, setImageError] = useState(false);
   const [currentImageSrc, setCurrentImageSrc] = useState(images[0] || "/placeholder.svg");
+  const [chatModalOpen, setChatModalOpen] = useState(false);
 
   // Function to handle external images with proxy to avoid CORS issues
   const getImageUrl = (url: string) => {
@@ -250,7 +252,7 @@ const PropertyCard = ({
         </div>
 
         {/* Speak to Advisor CTA */}
-        <div className="mt-4 pt-4 border-t border-border">
+        <div className="mt-4 pt-4 border-t border-border space-y-2">
           <Button 
             variant="outline" 
             size="sm" 
@@ -262,8 +264,30 @@ const PropertyCard = ({
           >
             {t("property_speak_advisor", "Speak to Advisor")}
           </Button>
+          <Button
+            variant="secondary"
+            size="sm"
+            className="w-full"
+            onClick={(e) => {
+              e.stopPropagation();
+              setChatModalOpen(true);
+            }}
+          >
+            <MessageSquare className="h-4 w-4 mr-2" />
+            Chat with Broker
+          </Button>
         </div>
       </CardContent>
+
+      <ChatModal
+        isOpen={chatModalOpen}
+        onClose={() => setChatModalOpen(false)}
+        propertyId={property.id}
+        propertyTitle={property.title}
+        propertyRef={property.ref || ''}
+        brokerId={property.owner_id || ''}
+        brokerName={property.seller_type || 'Broker'}
+      />
     </Card>
   );
 };
