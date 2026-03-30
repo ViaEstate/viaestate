@@ -57,8 +57,18 @@ CREATE INDEX IF NOT EXISTS idx_messages_created_at ON messages(created_at);
 -- STEP 4: Enable Real-time for messages
 -- =====================================================
 
--- Add messages to real-time publication (ignore if already exists)
-ALTER PUBLICATION supabase_realtime ADD TABLE messages;
+-- Add messages to real-time publication (skip if already exists)
+DO $
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_publication p 
+    JOIN pg_publication_tables pt ON p.oid = pt.pubid 
+    WHERE p.pubname = 'supabase_realtime' 
+    AND pt.tablename = 'messages'
+  ) THEN
+    ALTER PUBLICATION supabase_realtime ADD TABLE messages;
+  END IF;
+END $;
 
 -- =====================================================
 -- STEP 5: Row Level Security (RLS)
