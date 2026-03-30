@@ -11,8 +11,10 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from 'react-router-dom';
 import InquiryModal from "@/components/InquiryModal";
+import ChatModal from "./ChatModal";
 import { Tables } from '@/integrations/supabase/types';
 import { useLanguage } from "@/contexts/LanguageContext";
+import { MessageSquare } from "lucide-react";
 
 interface PropertyDetailModalProps {
   property: Tables<'properties'> | null;
@@ -39,6 +41,9 @@ const PropertyDetailModal = ({ property, isOpen, onClose }: PropertyDetailModalP
     const [loading, setLoading] = useState(false);
     const [inquiryModalOpen, setInquiryModalOpen] = useState(false);
     const [currentInquiryType, setCurrentInquiryType] = useState<'general' | 'inspection'>('general');
+  const [chatModalOpen, setChatModalOpen] = useState(false);
+  const [brokerName, setBrokerName] = useState<string>('Broker');
+  const [brokerEmail, setBrokerEmail] = useState<string | undefined>(undefined);
 
   const { user, profile } = useAuth();
   const { lang } = useLanguage();
@@ -75,6 +80,28 @@ const PropertyDetailModal = ({ property, isOpen, onClose }: PropertyDetailModalP
   const displayDescription = property ? getLanguageSpecificField("description", property.description) : "";
   const { toast } = useToast();
   const navigate = useNavigate();
+
+  // Fetch broker name when modal opens
+  useEffect(() => {
+    const fetchBrokerName = async () => {
+      if (property?.seller_id) {
+        const { data } = await supabase
+          .from('profiles')
+          .select('full_name, email')
+          .eq('id', property.seller_id)
+          .single();
+        
+        if (data) {
+          setBrokerName(data.full_name || 'Broker');
+          setBrokerEmail(data.email || undefined);
+        }
+      }
+    };
+
+    if (chatModalOpen && property) {
+      fetchBrokerName();
+    }
+  }, [chatModalOpen, property]);
 
   // Fetch forum posts for this property
   const fetchForumPosts = useCallback(async () => {
@@ -438,6 +465,14 @@ const PropertyDetailModal = ({ property, isOpen, onClose }: PropertyDetailModalP
                <Button
                  variant="outline"
                  className="flex-1 py-3 text-lg"
+                 onClick={() => setChatModalOpen(true)}
+               >
+                 <MessageSquare className="h-5 w-5 mr-2" />
+                 Chat with Broker
+               </Button>
+               <Button
+                 variant="outline"
+                 className="flex-1 py-3 text-lg"
                  onClick={handleBookInspection}
                >
                  <ClipboardCheck className="h-5 w-5 mr-2" />
@@ -454,6 +489,17 @@ const PropertyDetailModal = ({ property, isOpen, onClose }: PropertyDetailModalP
           onClose={() => setInquiryModalOpen(false)}
           property={property}
           inquiryType={currentInquiryType}
+        />
+        {/* Chat Modal */}
+        <ChatModal
+          isOpen={chatModalOpen}
+          onClose={() => setChatModalOpen(false)}
+          propertyId={property?.id || ''}
+          propertyTitle={property?.title || ''}
+          propertyRef={property?.ref || undefined}
+          brokerId={property?.seller_id || ''}
+          brokerName={brokerName}
+          brokerEmail={brokerEmail}
         />
       </DialogContent>
     </Dialog>
