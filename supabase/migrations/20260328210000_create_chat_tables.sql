@@ -57,7 +57,7 @@ CREATE INDEX IF NOT EXISTS idx_messages_created_at ON messages(created_at);
 -- STEP 4: Enable Real-time for messages
 -- =====================================================
 
--- Add messages to real-time publication
+-- Add messages to real-time publication (ignore if already exists)
 ALTER PUBLICATION supabase_realtime ADD TABLE messages;
 
 -- =====================================================
