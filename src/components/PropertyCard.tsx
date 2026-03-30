@@ -8,6 +8,7 @@ import { Tables } from "@/integrations/supabase/types";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getTranslatedTitle, getTranslatedDescription } from "@/utils/translation";
+import { supabase } from "@/lib/supabaseClient";
 
 type Property = Tables<"properties">;
 
@@ -66,6 +67,31 @@ const PropertyCard = ({
   const [imageError, setImageError] = useState(false);
   const [currentImageSrc, setCurrentImageSrc] = useState(images[0] || "/placeholder.svg");
   const [chatModalOpen, setChatModalOpen] = useState(false);
+  const [brokerName, setBrokerName] = useState<string>('Broker');
+  const [brokerEmail, setBrokerEmail] = useState<string | undefined>(undefined);
+
+  // Fetch broker name when modal opens or when we have a seller_id
+  useEffect(() => {
+    const fetchBrokerName = async () => {
+      if (property.seller_id) {
+        const { data } = await supabase
+          .from('profiles')
+          .select('full_name, email')
+          .eq('id', property.seller_id)
+          .single();
+        
+        if (data) {
+          setBrokerName(data.full_name || 'Broker');
+          setBrokerEmail(data.email || undefined);
+        }
+      }
+    };
+
+    // Only fetch when modal is about to open
+    if (chatModalOpen) {
+      fetchBrokerName();
+    }
+  }, [chatModalOpen, property.seller_id]);
 
   // Function to handle external images with proxy to avoid CORS issues
   const getImageUrl = (url: string) => {
@@ -284,9 +310,10 @@ const PropertyCard = ({
         onClose={() => setChatModalOpen(false)}
         propertyId={property.id}
         propertyTitle={property.title}
-        propertyRef={property.ref || ''}
-        brokerId={property.owner_id || ''}
-        brokerName={property.seller_type || 'Broker'}
+        propertyRef={undefined}
+        brokerId={property.seller_id || ''}
+        brokerName={brokerName}
+        brokerEmail={brokerEmail}
       />
     </Card>
   );

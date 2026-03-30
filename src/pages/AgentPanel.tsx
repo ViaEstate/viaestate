@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Building, MapPin, Euro, Calendar, User, Clock, CheckCircle } from "lucide-react";
+import { Building, MapPin, Euro, Calendar, User, Clock, CheckCircle, MessageSquare, Send } from "lucide-react";
 
 const AgentPanel = () => {
   const { user, profile } = useAuth();
@@ -18,6 +18,10 @@ const AgentPanel = () => {
   const [myProperties, setMyProperties] = useState([]);
   const [openRequests, setOpenRequests] = useState([]);
   const [claimedRequests, setClaimedRequests] = useState([]);
+  const [conversations, setConversations] = useState<any[]>([]);
+  const [selectedConversation, setSelectedConversation] = useState<any>(null);
+  const [replyMessage, setReplyMessage] = useState("");
+  const [sendingReply, setSendingReply] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -66,16 +70,32 @@ const AgentPanel = () => {
 
       if (claimedError) throw claimedError;
 
+      // Fetch conversations for this broker
+      const { data: convs, error: convsError } = await supabase
+        .from('conversations')
+        .select('*')
+        .eq('broker_id', user?.id)
+        .order('last_activity_at', { ascending: false });
+
+      if (convsError) {
+        console.warn('No conversations table yet - this is expected if migration not run');
+      } else {
+        setConversations(convs || []);
+      }
+
       setMyProperties(properties || []);
       setOpenRequests(openReqs || []);
       setClaimedRequests(claimedReqs || []);
     } catch (error: any) {
       console.error('Error fetching agent data:', error);
-      toast({
-        title: "Error",
-        description: "Failed to load agent data.",
-        variant: "destructive"
-      });
+      // Don't show error toast for missing conversations table
+      if (!error.message?.includes('conversations')) {
+        toast({
+          title: "Error",
+          description: "Failed to load agent data.",
+          variant: "destructive"
+        });
+      }
     } finally {
       setLoading(false);
     }
@@ -124,6 +144,49 @@ const AgentPanel = () => {
       month: 'short',
       day: 'numeric'
     });
+  };
+
+  const handleSendReply = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!replyMessage.trim() || !selectedConversation || sendingReply) return;
+
+    setSendingReply(true);
+    try {
+      const { error } = await supabase
+        .from('messages')
+        .insert({
+          conversation_id: selectedConversation.id,
+          content: replyMessage,
+          sender_type: 'broker',
+          sender_id: user?.id,
+        });
+
+      if (error) throw error;
+
+      // Update conversation last activity
+      await supabase
+        .from('conversations')
+        .update({ last_activity_at: new Date().toISOString() })
+        .eq('id', selectedConversation.id);
+
+      setReplyMessage('');
+      // Refresh conversations
+      fetchAgentData();
+
+      toast({
+        title: "Message Sent",
+        description: "Your reply has been sent to the customer.",
+      });
+    } catch (error: any) {
+      console.error('Error sending reply:', error);
+      toast({
+        title: "Error",
+        description: error.message || "Failed to send reply.",
+        variant: "destructive"
+      });
+    } finally {
+      setSendingReply(false);
+    }
   };
 
   if (!user || (profile && profile.role !== 'broker')) {
@@ -207,10 +270,19 @@ const AgentPanel = () => {
         </div>
 
         <Tabs defaultValue="properties" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-3">
+          <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="properties">My Properties</TabsTrigger>
             <TabsTrigger value="requests">Available Requests</TabsTrigger>
             <TabsTrigger value="claimed">My Claimed Requests</TabsTrigger>
+            <TabsTrigger value="messages">
+              <MessageSquare className="h-4 w-4 mr-2" />
+              Messages
+              {conversations.length > 0 && (
+                <Badge variant="destructive" className="ml-2 h-5 w-5 p-0 flex items-center justify-center">
+                  {conversations.length}
+                </Badge>
+              )}
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="properties">
@@ -391,6 +463,98 @@ const AgentPanel = () => {
                     <CheckCircle className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
                     <p className="text-muted-foreground">
                       No claimed requests yet. Check the available requests to get started!
+                    </p>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Messages Tab */}
+          <TabsContent value="messages">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <MessageSquare className="h-5 w-5" />
+                  Customer Messages
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                {conversations.length > 0 ? (
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                    {/* Conversation List */}
+                    <div className="lg:col-span-1 space-y-2">
+                      {conversations.map((conv) => (
+                        <div
+                          key={conv.id}
+                          onClick={() => setSelectedConversation(conv)}
+                          className={`p-3 rounded-lg border cursor-pointer transition-colors ${
+                            selectedConversation?.id === conv.id
+                              ? 'bg-primary/10 border-primary'
+                              : 'hover:bg-muted/50'
+                          }`}
+                        >
+                          <div className="flex items-center justify-between">
+                            <p className="font-medium text-sm">
+                              {conv.lead_name || conv.lead_email}
+                            </p>
+                            <Badge variant={conv.status === 'active' ? 'default' : 'secondary'}>
+                              {conv.status}
+                            </Badge>
+                          </div>
+                          <p className="text-xs text-muted-foreground mt-1 truncate">
+                            {conv.property_title}
+                          </p>
+                          <p className="text-xs text-muted-foreground mt-1">
+                            {formatDate(conv.last_activity_at)}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Message Thread */}
+                    <div className="lg:col-span-2">
+                      {selectedConversation ? (
+                        <div className="flex flex-col h-[400px]">
+                          <div className="border-b pb-2 mb-2">
+                            <h3 className="font-semibold">{selectedConversation.property_title}</h3>
+                            <p className="text-xs text-muted-foreground">
+                              Customer: {selectedConversation.lead_name || selectedConversation.lead_email}
+                            </p>
+                          </div>
+                          <div className="flex-1 overflow-y-auto space-y-2 p-2 bg-muted/30 rounded">
+                            <div className="text-center text-sm text-muted-foreground py-4">
+                              Messages will appear here. (Database table needs to be created)
+                            </div>
+                          </div>
+                          <form onSubmit={handleSendReply} className="mt-2 flex gap-2">
+                            <input
+                              type="text"
+                              value={replyMessage}
+                              onChange={(e) => setReplyMessage(e.target.value)}
+                              placeholder="Type a reply..."
+                              className="flex-1"
+                            />
+                            <Button type="submit" disabled={sendingReply || !replyMessage.trim()}>
+                              <Send className="h-4 w-4" />
+                            </Button>
+                          </form>
+                        </div>
+                      ) : (
+                        <div className="h-[400px] flex items-center justify-center text-muted-foreground">
+                          <p>Select a conversation to view messages</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="text-center py-8">
+                    <MessageSquare className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
+                    <p className="text-muted-foreground">
+                      No messages yet. Customers will message you from property pages.
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-2">
+                      Note: Make sure the chat database migration has been run.
                     </p>
                   </div>
                 )}
