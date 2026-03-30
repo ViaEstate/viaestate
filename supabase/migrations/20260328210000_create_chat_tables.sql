@@ -70,21 +70,24 @@ ALTER TABLE conversations ENABLE ROW LEVEL SECURITY;
 ALTER TABLE messages ENABLE ROW LEVEL SECURITY;
 
 -- =====================================================
--- Conversations Policies
+-- Conversations Policies (Use OR REPLACE)
 -- =====================================================
 
 -- Anyone can create a new conversation (lead initiates)
+DROP POLICY IF EXISTS "Anyone can create conversation" ON conversations;
 CREATE POLICY "Anyone can create conversation"
     ON conversations FOR INSERT
     WITH CHECK (true);
 
 -- Allow public read access to conversations for now (can be tightened later)
 -- This allows leads to access via token passed in request
+DROP POLICY IF EXISTS "Public read conversations" ON conversations;
 CREATE POLICY "Public read conversations"
     ON conversations FOR SELECT
     USING (true);
 
 -- Anyone can update conversation (for last_activity tracking)
+DROP POLICY IF EXISTS "Anyone can update conversation" ON conversations;
 CREATE POLICY "Anyone can update conversation"
     ON conversations FOR UPDATE
     USING (true);
@@ -94,11 +97,13 @@ CREATE POLICY "Anyone can update conversation"
 -- =====================================================
 
 -- Anyone can insert a message (both lead and broker)
+DROP POLICY IF EXISTS "Anyone can send message" ON messages;
 CREATE POLICY "Anyone can send message"
     ON messages FOR INSERT
     WITH CHECK (true);
 
 -- Allow public read access to messages (can be tightened later)
+DROP POLICY IF EXISTS "Public read messages" ON messages;
 CREATE POLICY "Public read messages"
     ON messages FOR SELECT
     USING (true);
