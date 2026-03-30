@@ -54,21 +54,13 @@ CREATE INDEX IF NOT EXISTS idx_messages_conversation_id ON messages(conversation
 CREATE INDEX IF NOT EXISTS idx_messages_created_at ON messages(created_at);
 
 -- =====================================================
--- STEP 4: Enable Real-time for messages
+-- STEP 4: Enable Real-time for messages (OPTIONAL - Skip if causing errors)
+-- Uncomment the line below only if you need real-time updates
+-- The chat will work without this, just no live updates
 -- =====================================================
 
--- Add messages to real-time publication (skip if already exists)
-DO $
-BEGIN
-  IF NOT EXISTS (
-    SELECT 1 FROM pg_publication p 
-    JOIN pg_publication_tables pt ON p.oid = pt.pubid 
-    WHERE p.pubname = 'supabase_realtime' 
-    AND pt.tablename = 'messages'
-  ) THEN
-    ALTER PUBLICATION supabase_realtime ADD TABLE messages;
-  END IF;
-END $;
+-- This will fail if messages is already in the publication:
+-- ALTER PUBLICATION supabase_realtime ADD TABLE messages;
 
 -- =====================================================
 -- STEP 5: Row Level Security (RLS)
