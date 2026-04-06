@@ -176,6 +176,18 @@ const AdminPanel = () => {
       // Fetch country clicks statistics
       fetchCountryClicks()
 
+      // Fetch all conversations
+      const { data: convsData, error: convsError } = await supabase
+        .from('conversations')
+        .select('*')
+        .order('last_activity_at', { ascending: false })
+
+      if (convsError) {
+        console.warn('No conversations table yet - this is expected if migration not run')
+      } else {
+        setAllConversations(convsData || [])
+      }
+
     } catch (error: any) {
       toast({
         title: "Error loading admin data",

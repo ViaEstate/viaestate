@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from '@/lib/supabaseClient';
@@ -20,9 +20,11 @@ const AgentPanel = () => {
   const [claimedRequests, setClaimedRequests] = useState([]);
   const [conversations, setConversations] = useState<any[]>([]);
   const [selectedConversation, setSelectedConversation] = useState<any>(null);
+  const [messages, setMessages] = useState<any[]>([]);
   const [replyMessage, setReplyMessage] = useState("");
   const [sendingReply, setSendingReply] = useState(false);
   const [loading, setLoading] = useState(true);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!user) {
@@ -101,6 +103,59 @@ const AgentPanel = () => {
     }
   };
 
+  // Fetch messages for a conversation
+  const fetchMessages = async (conversationId: string) => {
+    try {
+      const { data, error } = await supabase
+        .from('messages')
+        .select('*')
+        .eq('conversation_id', conversationId)
+        .order('created_at', { ascending: true });
+      
+      if (error) throw error;
+      setMessages(data || []);
+    } catch (error: any) {
+      console.error('Error fetching messages:', error);
+    }
+  };
+
+  // Handle conversation selection
+  const handleSelectConversation = (conv: any) => {
+    setSelectedConversation(conv);
+    fetchMessages(conv.id);
+  };
+
+  // Scroll to bottom when new messages arrive
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  // Subscribe to real-time messages for selected conversation
+  useEffect(() => {
+    if (!selectedConversation) return;
+
+    const subscription = supabase
+      .channel(`chat-${selectedConversation.id}`)
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'messages',
+          filter: `conversation_id=eq.${selectedConversation.id}`,
+        },
+        (payload: any) => {
+          const newMessage = payload.new;
+          setMessages(prev => [...prev, newMessage]);
+        }
+      )
+      .subscribe();
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [selectedConversation]);
+
   const handleClaimRequest = async (requestId: string) => {
     try {
       const { error } = await supabase
@@ -142,7 +197,9 @@ const AgentPanel = () => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',
-      day: 'numeric'
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
     });
   };
 
@@ -170,8 +227,11 @@ const AgentPanel = () => {
         .eq('id', selectedConversation.id);
 
       setReplyMessage('');
-      // Refresh conversations
+      // Refresh conversations and messages
       fetchAgentData();
+      if (selectedConversation) {
+        fetchMessages(selectedConversation.id);
+      }
 
       toast({
         title: "Message Sent",
@@ -487,7 +547,7 @@ const AgentPanel = () => {
                       {conversations.map((conv) => (
                         <div
                           key={conv.id}
-                          onClick={() => setSelectedConversation(conv)}
+                          onClick={() => handleSelectConversation(conv)}
                           className={`p-3 rounded-lg border cursor-pointer transition-colors ${
                             selectedConversation?.id === conv.id
                               ? 'bg-primary/10 border-primary'
@@ -523,9 +583,37 @@ const AgentPanel = () => {
                             </p>
                           </div>
                           <div className="flex-1 overflow-y-auto space-y-2 p-2 bg-muted/30 rounded">
-                            <div className="text-center text-sm text-muted-foreground py-4">
-                              Messages will appear here. (Database table needs to be created)
-                            </div>
+                            {messages.length > 0 ? (
+                              messages.map((msg) => {
+                                const isBroker = msg.sender_type === 'broker';
+                                return (
+                                  <div
+                                    key={msg.id}
+                                    className={`flex ${isBroker ? 'justify-end' : 'justify-start'}`}
+                                  >
+                                    <div
+                                      className={`max-w-[80%] rounded-lg px-4 py-2 ${
+                                        isBroker
+                                          ? 'bg-primary text-primary-foreground'
+                                          : 'bg-muted'
+                                      }`}
+                                    >
+                                      <p className="whitespace-pre-wrap">{msg.content}</p>
+                                      <p className={`text-xs mt-1 opacity-70 ${
+                                        isBroker ? 'text-primary-foreground/70' : 'text-muted-foreground'
+                                      }`}>
+                                        {isBroker ? 'Du' : (selectedConversation.lead_name || selectedConversation.lead_email)} · {formatDate(msg.created_at)}
+                                      </p>
+                                    </div>
+                                  </div>
+                                );
+                              })
+                            ) : (
+                              <div className="text-center text-sm text-muted-foreground py-4">
+                                Inga meddelanden ännu. Skicka ett meddelande för att börja konversationen!
+                              </div>
+                            )}
+                            <div ref={messagesEndRef} />
                           </div>
                           <form onSubmit={handleSendReply} className="mt-2 flex gap-2">
                             <input

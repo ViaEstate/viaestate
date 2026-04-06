@@ -345,6 +345,10 @@ const ListProperty = () => {
                         <SelectItem value="France">France</SelectItem>
                         <SelectItem value="Spain">Spain</SelectItem>
                         <SelectItem value="Italy">Italy</SelectItem>
+                        <SelectItem value="Greece">Greece</SelectItem>
+                        <SelectItem value="Portugal">Portugal</SelectItem>
+                        <SelectItem value="Croatia">Croatia</SelectItem>
+                        <SelectItem value="Finland">Finland</SelectItem>
                         <SelectItem value="Other">Other</SelectItem>
                       </SelectContent>
                     </Select>

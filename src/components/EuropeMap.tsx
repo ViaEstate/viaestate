@@ -11,7 +11,7 @@ import { Mail, Send, Loader2, MapPin } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 // Use common countries - will be updated dynamically if DB works
-const DEFAULT_COUNTRIES = ['Spain', 'Sweden', 'Germany', 'France', 'Italy', 'Portugal', 'Greece', 'Finland', 'Norway', 'Netherlands', 'Denmark', 'Belgium', 'Austria', 'Switzerland'];
+const DEFAULT_COUNTRIES = ['Spain', 'Sweden', 'Germany', 'France', 'Italy', 'Portugal', 'Greece', 'Finland', 'Norway', 'Netherlands', 'Denmark', 'Belgium', 'Austria', 'Switzerland', 'Croatia'];
 
 // Country code to name mapping
 const COUNTRY_CODE_MAP: Record<string, string> = {
