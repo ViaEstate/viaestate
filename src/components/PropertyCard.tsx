@@ -296,11 +296,12 @@ const PropertyCard = ({
             className="w-full"
             onClick={(e) => {
               e.stopPropagation();
+              console.log('Chat button clicked, property.seller_id:', property.seller_id);
               setChatModalOpen(true);
             }}
           >
             <MessageSquare className="h-4 w-4 mr-2" />
-            Chat with Broker
+            Chatta med Mäklare
           </Button>
         </div>
       </CardContent>
