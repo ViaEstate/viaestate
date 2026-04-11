@@ -462,14 +462,16 @@ const PropertyDetailModal = ({ property, isOpen, onClose }: PropertyDetailModalP
                  <Send className="h-5 w-5 mr-2" />
                  Send Inquiry
                </Button>
-               <Button
-                 variant="outline"
-                 className="flex-1 py-3 text-lg"
-                 onClick={() => setChatModalOpen(true)}
-               >
-                 <MessageSquare className="h-5 w-5 mr-2" />
-                 Chat with Broker
-               </Button>
+               {property?.seller_id && (
+                 <Button
+                   variant="outline"
+                   className="flex-1 py-3 text-lg"
+                   onClick={() => setChatModalOpen(true)}
+                 >
+                   <MessageSquare className="h-5 w-5 mr-2" />
+                   Chat with Broker
+                 </Button>
+               )}
                <Button
                  variant="outline"
                  className="flex-1 py-3 text-lg"

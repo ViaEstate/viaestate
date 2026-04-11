@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { MessageSquare, Send, X, Loader2 } from 'lucide-react';
 import { useChat } from '@/hooks/useChat';
 import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface ChatModalProps {
   isOpen: boolean;
@@ -38,6 +39,7 @@ export function ChatModal({
   
   const { createConversation, leadToken } = useChat();
   const navigate = useNavigate();
+  const { lang } = useLanguage();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -69,7 +71,7 @@ export function ChatModal({
         // Redirect to chat page after short delay
         setTimeout(() => {
           onClose();
-          navigate(`/chat/${leadToken}`);
+          navigate(`/${lang}/chat/${leadToken}`);
         }, 1500);
       } else {
         setStatus('error');

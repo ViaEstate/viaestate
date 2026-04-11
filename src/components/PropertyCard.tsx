@@ -290,19 +290,20 @@ const PropertyCard = ({
           >
             {t("property_speak_advisor", "Speak to Advisor")}
           </Button>
-          <Button
-            variant="secondary"
-            size="sm"
-            className="w-full"
-            onClick={(e) => {
-              e.stopPropagation();
-              console.log('Chat button clicked, property.seller_id:', property.seller_id);
-              setChatModalOpen(true);
-            }}
-          >
-            <MessageSquare className="h-4 w-4 mr-2" />
-            Chatta med Mäklare
-          </Button>
+          {property.seller_id && (
+            <Button
+              variant="default"
+              size="sm"
+              className="w-full"
+              onClick={(e) => {
+                e.stopPropagation();
+                setChatModalOpen(true);
+              }}
+            >
+              <MessageSquare className="h-4 w-4 mr-2" />
+              Chatta med Mäklare
+            </Button>
+          )}
         </div>
       </CardContent>
 
