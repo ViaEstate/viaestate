@@ -32,27 +32,27 @@ const FeaturedProperties = () => {
           region, address, lat, lon, features, distance_to_beach_m, views, verified, currency
         `;
 
-        const featuredPropertyIds = [
-          '2052a022-913d-4c7c-9588-b26cefd8f4ec',
-          '4f718768-4cb9-41f4-8ca7-c3dff76b070f',
-          'd0cfbc29-d9f9-4c07-a3da-39784ef9dea6',
-          '74af8e60-df30-4793-af20-e1ce32229f50',
-        ];
-
         const { data, error } = await supabase
           .from('properties')
           .select(selectFields)
-          .in('id', featuredPropertyIds)
-          .eq('status', 'published');
+          .eq('status', 'published')
+          .order('verified', { ascending: false })
+          .order('created_at', { ascending: false })
+          .limit(100);
 
         if (error) {
           console.error("Error fetching featured properties:", error);
           setProperties([]);
         } else {
-          const sortedProperties = (data || []).sort((a, b) => 
-            featuredPropertyIds.indexOf(a.id) - featuredPropertyIds.indexOf(b.id)
-          );
-          setProperties(sortedProperties as Property[]);
+          // Pick one property per country (first = most recent/verified)
+          const seen = new Set<string>();
+          const featuredPerCountry = (data || []).filter((p) => {
+            const key = p.country?.toLowerCase();
+            if (!key || seen.has(key)) return false;
+            seen.add(key);
+            return true;
+          });
+          setProperties(featuredPerCountry as Property[]);
         }
       } catch (error) {
         console.error("Error fetching featured properties:", error);
